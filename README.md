@@ -96,10 +96,6 @@ Além dos requisitos solicitados no desafio, foram implementadas melhorias adici
 
 ---
 
----
-
-## 📁 Estrutura do Projeto
-
 ## ♿ Acessibilidade
 
 Foram aplicadas boas práticas de acessibilidade:
@@ -140,27 +136,34 @@ Além dos requisitos solicitados no desafio, foram implementadas melhorias adici
 
 📸 Preview
 Tela de Login
-
+<img src="./src/assets/Captura de tela 2026-06-01 194607.jpg">
 
 
 
 Página Principal
-
+<img src="./src/assets/Tela principale celular.jpg">
+<img src="./src/assets/Tela principale notebook.jpg">
+<img src="./src/assets/Tela principale escuro ingles.jpg">
 
 
 
 Modo Escuro
+
+<img src="./src/assets/Tema escuro.jpg">
 
 
 
 
 Itens Arquivados
 
+<img src="./src/assets/tela de arquivados.jpg">
+
 
 
 
 Responsividade Mobile
 
+<img src="./src/assets/Responsividade.jpg">
 
 ---
 
