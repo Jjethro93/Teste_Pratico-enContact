@@ -1,73 +1,169 @@
-# React + TypeScript + Vite
+# 📧 EnContact Frontend Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação desenvolvida como solução para o teste prático de Desenvolvedor Frontend da EnContact.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tecnologias Utilizadas
 
-## React Compiler
+* React
+* TypeScript
+* React Router DOM
+* Context API
+* React i18next
+* Tailwind CSS
+* Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📋 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔐 Autenticação
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Tela de login simples.
+* Credenciais fixas para demonstração:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  * **Usuário:** Admin
+  * **Senha:** Admin
+* Rotas protegidas.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🌍 Internacionalização (i18n)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+* Suporte para Português e Inglês.
+* Alteração dinâmica de idioma através de um botão switch.
+* Tradução de componentes e conteúdos da interface.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🎨 Tematização
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Alternância entre:
+
+  * Light Mode ☀️
+  * Dark Mode 🌙
+* Persistência da preferência do usuário.
+
+### 📱 Responsividade
+
+* Layout adaptado para:
+
+  * Desktop
+  * Tablet
+  * Mobile
+
+### 📂 Menu Dinâmico
+
+Consumo da API:
+Funcionalidades:
+
+* Carregamento dinâmico dos menus.
+* Exibição hierárquica de menus e submenus.
+* Atualização automática da listagem ao selecionar um submenu.
+
+### 📧 Listagem de Mensagens
+
+Consumo da API:
+
+Cada card apresenta:
+
+* Nome do remetente
+* Assunto
+* Owner
+* Usuários associados
+
+### ✅ Seleção Múltipla
+
+* Exibição de checkbox ao passar o mouse sobre o item.
+* Seleção de múltiplas mensagens.
+* Interface inspirada no comportamento do Office365.
+
+### 🗄️ Arquivamento
+
+* Arquivamento de múltiplos itens.
+* Remoção automática da listagem principal.
+* Página exclusiva para visualização dos itens arquivados.
+
+---
+
+## ✨ Funcionalidades Extras
+
+Além dos requisitos solicitados no desafio, foram implementadas melhorias adicionais:
+
+* Persistência do idioma selecionado.
+* Persistência do tema escolhido.
+* Página exclusiva para itens arquivados.
+* Gerenciamento global de estado utilizando Context API.
+* Componentização para facilitar manutenção e reutilização de código.
+* Proteção de rotas baseada em autenticação.
+
+---
+
+---
+
+## 📁 Estrutura do Projeto
+
+## ♿ Acessibilidade
+
+Foram aplicadas boas práticas de acessibilidade:
+
+* Hierarquia visual clara.
+* Navegação intuitiva.
+* Contraste adequado entre temas.
+* Feedback visual para interações do usuário.
+* Layout responsivo para diferentes dispositivos.
+
+## 🎯 Objetivos Atendidos
+
+✅ Layout e apresentação visual
+
+✅ Responsividade
+
+✅ Internacionalização (i18n)
+
+✅ Tematização (Dark/Light Mode)
+
+✅ Login com proteção de rotas
+
+✅ Consumo de APIs externas
+
+✅ Reutilização de componentes
+
+✅ Arquivamento de mensagens
+
+✅ Boas práticas de organização e estruturação
+
+Além dos requisitos solicitados no desafio, foram implementadas melhorias adicionais:
+
+* Página exclusiva para visualização dos itens arquivados.
+* Navegação entre páginas utilizando React Router DOM e useNavigate.
+* Botão dedicado para acessar a tela de itens arquivados.
+* Gerenciamento global de estado utilizando Context API.
+* Componentização para facilitar manutenção e reutilização de código.
+
+📸 Preview
+Tela de Login
+
+
+
+
+Página Principal
+
+
+
+
+Modo Escuro
+
+
+
+
+Itens Arquivados
+
+
+
+
+Responsividade Mobile
+
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Jethro Sufra** como solução para o desafio técnico da EnContact.
