@@ -8,6 +8,7 @@
     "Cadastro": "Cadastro",
     "Atribuir": "Atribuir",
     "Agendar": "Agendar",
+    "Arquivar": "Arquivar",
     "Nome de usuário": "Nome de usuário",
     "Logar": "Logar",
     "Digite seu email": "Digite seu email",
@@ -47,5 +48,7 @@
     "Editar perfil": "Editar perfil",
     "Configurações": "Configurações",
     "Ajuda": "Ajuda",
-    "sair": "Sair"
+    "sair": "Sair",
+    "Por favor, selecione uma conta": "Por favor, selecione uma conta",
+    "Nenhum item arquivado!": "Nenhum item arquivado!"
 }

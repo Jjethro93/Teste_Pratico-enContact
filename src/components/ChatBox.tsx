@@ -70,16 +70,17 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
 
 
     return (
-        <div className="bg-gray-100 dark:bg-gray-600">
+        <div className="bg-gray-100 dark:bg-gray-600 rounded-b-2xl min-h-40">
 
             <div className="flex flex-col ">
 
-                {visibleItems.map((item) => {
+                {visibleItems.length===0 ? (<h1 className="flex justify-center mt-10 text-3xl font-semibold text-amber-600 dark:text-amber-50 items-center">{t("Por favor, selecione uma conta")}</h1>)
+                 : (visibleItems.map((item) => {
                     const isChecked = checkedItems.some((checkedItem: subMenuItemProps) => checkedItem.id === item.id);
                     return (
 
 
-                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-bl-xl group hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors ">
+                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-b-xl group hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors ">
                         <div className="flex items-center gap-4 w-full ">
 
                             <div className="flex items-center justify-center w-10 h-10 relative shrink-0">
@@ -108,8 +109,8 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
 
                                 </div>
                                 <div className="flex flex-col items-end w-30 pr-3">
-                                    <p className="text-[12px] text-amber-600">Hoje, 11:42</p>
-                                    <p className="text-[10px] font-semibold">30 min</p>
+                                    <p className="text-[12px] text-amber-600 dark:text-amber-50">Hoje, 11:42</p>
+                                    <p className="text-[10px] font-semibold text-amber-600 dark:text-amber-50">30 min</p>
 
                                     <div className="flex -space-x-1.5 justify-end" >
 
@@ -124,7 +125,8 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
                         </div>
                     </div>
                     )
-                })}
+                }))
+                }
             </div>
         </div>
     );

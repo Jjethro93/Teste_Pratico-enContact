@@ -3,12 +3,13 @@ import Button from "../components/Button";
 import ChatBox from "../components/ChatBox";
 import SideConversation from "../components/SideConversation";
 import UserMenu from "../components/userMenu"
-import { ChevronDown, Moon, Sun } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useArchive } from "../context/archiveContext";
 import { useNavigate } from "react-router";
 import { useUser } from "../context/userContext";
 import ButtonLanguage from "../components/ButtonLanguage";
 import { useTranslation } from "react-i18next";
+import ButtonDarkMode from "../components/ButtonDarkMode";
 
 interface subMenuprops {
     id: number;
@@ -32,14 +33,8 @@ export default function MainPage() {
 
 
 
-    const [darkMode, setDarkMode] = useState(false);
-const toggleDarkMode = () => {
-        const newMode = !darkMode;
+    const [darkMode] = useState(false);
 
-        setDarkMode(newMode);
-
-        document.documentElement.classList.toggle("dark", newMode);
-    };
 
 const navigate = useNavigate()
     const [activeContact, setActiveContact] = useState<contactT | null>(null);
@@ -61,16 +56,14 @@ const navigate = useNavigate()
     return (
 
 
-        <div className={`flex flex-col gap-2 md:flex-row w-full md:min-h-screen bg-amber-600 dark:bg-gray-600  md:p-6 ${darkMode && "dark:"}`}>
-            <div className="fixed z-50 p-2 shadow-md top-28 right-3 md:top-auto md:left-auto md:bottom-10">
-            <button onClick={toggleDarkMode} className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border  hover:bg-gray-100 hover:text-amber-600 font-semibold">
-                {darkMode ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
+        <div className={`flex flex-col gap-2 md:flex-row w-full md:min-h-screen bg-amber-600 dark:bg-gray-900  md:p-6 ${darkMode && "dark:"}`}>
+            <div className="fixed z-50 p-2 shadow-md top-28 right-3 md:top-auto md:left-auto justify-start md:bottom-10">
+            <ButtonDarkMode/>
 
             <ButtonLanguage className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border  hover:bg-gray-100 hover:text-amber-600 font-semibold" />
             </div>
 
-            <div className="flex flex-col sticky z-10 bg-amber-600 dark:bg-gray-600 md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
+            <div className="flex flex-col sticky z-10 bg-amber-600 dark:bg-gray-900 md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
                 <nav className="flex flex-row justify-between w-full mt-4 mb-3 gap-2 ">
                     <div className="flex flex-row  items-center  animate-[fadeIn_1.5s_ease-in-out_forwards] gap-2">
                         <UserMenu />
@@ -95,7 +88,7 @@ const navigate = useNavigate()
 
 
             </div>
-            <section className=" w-full md:w-[80%] h-[70%] md:h-full bg-gray-100 dark:bg-cyan-950 rounded-t-2xl mt-3 md:mt-0">
+            <section className=" w-full md:w-[80%] h-[70%] md:h-full bg-gray-100 dark:bg-cyan-950 rounded-2xl mt-3 md:mt-0">
                <div className="flex flex-col justify-between gap-3 m-3.5">
                 <div className="flex flex-row items-center justify-between gap-1 border-2 border-none  ">
                     <input type="search" placeholder={t("Pesquisar")} className="w-full border border-amber-600 hover:border-2 outline-none bg-gray-200 h-10.5

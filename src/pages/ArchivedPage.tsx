@@ -1,45 +1,38 @@
-import { ChevronDown, Moon, Sun } from "lucide-react";
+import { ChevronDown } from "lucide-react"
 import { useArchive } from "../context/archiveContext"
 import { useState } from "react";
 import UserMenu from "../components/userMenu";
 import { useUser } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import ButtonLanguage from "../components/ButtonLanguage";
+import { useNavigate } from "react-router";
+import ButtonDarkMode from "../components/ButtonDarkMode";
 
 
 function ArchivedPage() {
     const{t} = useTranslation();
-    const [darkMode, setDarkMode] = useState(false);
-   
+    const [darkMode] = useState(false);
 
-
-
+    const navigate = useNavigate()
 
   const { archivedItems } = useArchive();
 const {user} = useUser()
-      const toggleDarkMode = () => {
-           const newMode = !darkMode;
-
-           setDarkMode(newMode);
-
-           document.documentElement.classList.toggle("dark", newMode);
-       };
+      
 
  
 
   return (
-    <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-amber-600 dark:bg-gray-600  md:p-6 ${darkMode && "dark:"}`}>
+    <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-amber-600 dark:bg-gray-900  md:p-6 ${darkMode && "dark:"}`}>
             <div className="fixed z-50 p-2 shadow-md top-28 right-3 md:top-auto md:left-auto md:bottom-10">
-            <button onClick={toggleDarkMode} className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border  hover:bg-gray-100 hover:text-amber-600 font-semibold">
-                {darkMode ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
+            <button onClick={() => navigate("/home")} className="fixed left-5 bottom-5 cursor-pointer text-amber-600 bg-amber-50 w-20 p-2 rounded-2xl">{t("Voltar")}</button>
+            <ButtonDarkMode />
 
             <ButtonLanguage className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border  hover:bg-gray-100 hover:text-amber-600 font-semibold" />
             </div>
 
            
 
-            <div className="flex flex-col sticky z-20 bg-amber-600 dark:bg-gray-600 md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
+            <div className="flex flex-col sticky z-20 bg-amber-600 dark:bg-gray-900 md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
                 <nav className="flex flex-row justify-between w-full mt-4 mb-3 gap-2  ">
                     
                     <div className="flex flex-row  items-center  animate-[fadeIn_1.5s_ease-in-out_forwards] gap-2">
@@ -57,11 +50,16 @@ const {user} = useUser()
                  <hr className="border-gray-100 border-2 dark:border-cyan-800 dark:border-b-cyan-950  "></hr>
             </div>
 
-        <div className="bg-gray-100 dark:bg-cyan-900">
+        <div className="bg-gray-100 dark:bg-cyan-900 w-full md:w-[75%] h-full rounded-t-2xl md:rounded-tl-none md:rounded-bl-2xl p-5">
 
-         <div className="flex flex-col ">
+         <div className="flex flex-col w-full min-h-50">
 
-                 {archivedItems.map(item => (
+            { archivedItems.length === 0 ? (
+                <p className="flex justify-center mt-20 text-3xl font-semibold text-amber-600 dark:text-amber-50 items-center">{t("Nenhum item arquivado!")}</p>)
+                :
+                (
+
+                 archivedItems.map(item => (
 
 
                      <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-bl-xl group hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors ">
@@ -85,13 +83,13 @@ const {user} = useUser()
 
                                      <h2 className="font-bold">{item.name}</h2>
 
-                                     <p>t(item.subject)</p>
+                                     <p>{t(item.subject)}</p>
 
 
                                  </div>
                                  <div className="flex flex-col items-end w-30 pr-3">
-                                     <p className="text-[12px] text-amber-600">Hoje, 11:42</p>
-                                     <p className="text-[10px] font-semibold">30 min</p>
+                                     <p className="text-[12px] text-amber-600 dark:text-amber-50">Hoje, 11:42</p>
+                                     <p className="text-[10px] font-semibold text-amber-600 dark:text-amber-50">30 min</p>
 
                                      <div className="flex -space-x-1.5 justify-end" >
 
@@ -105,7 +103,9 @@ const {user} = useUser()
 
                          </div>
                      </div>
-                 ))}
+                 )))}
+                 
+                 
 
              </div>
              </div>
