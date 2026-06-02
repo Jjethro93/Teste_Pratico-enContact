@@ -88,7 +88,7 @@ const navigate = useNavigate()
 
 
             </div>
-            <section className=" w-full md:w-[80%] h-[70%] md:h-full bg-gray-100 dark:bg-cyan-950 rounded-2xl mt-3 md:mt-0">
+            <section className=" w-full md:w-[80%] h-[70%] md:h-full bg-gray-100 dark:bg-cyan-950 rounded-t-2xl md:rounded-tl-none md:rounded-bl-2xl mt-3 md:mt-0">
                <div className="flex flex-col justify-between gap-3 m-3.5">
                 <div className="flex flex-row items-center justify-between gap-1 border-2 border-none  ">
                     <input type="search" placeholder={t("Pesquisar")} className="w-full border border-amber-600 hover:border-2 outline-none bg-gray-200 h-10.5

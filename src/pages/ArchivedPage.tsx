@@ -55,7 +55,7 @@ const {user} = useUser()
          <div className="flex flex-col w-full min-h-50">
 
             { archivedItems.length === 0 ? (
-                <p className="flex justify-center mt-20 text-3xl font-semibold text-amber-600 dark:text-amber-50 items-center">{t("Nenhum item arquivado!")}</p>)
+                <p className="flex justify-center mt-20 text-2xl md:text-3xl font-semibold text-amber-600 dark:text-amber-50 items-center">{t("Nenhum item arquivado!")}</p>)
                 :
                 (
 
