@@ -57,7 +57,7 @@ const navigate = useNavigate()
 
 
         <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-700 to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700  md:p-6 ${darkMode && "dark:"}`}>
-            <div className="flex flex-col gap-2 fixed z-50 p-2 top-22 right-1 md:top-auto md:left-auto justify-start md:bottom-10">
+            <div className="flex flex-col gap-2 fixed z-50 p-2 top-40 right-1 md:top-auto md:left-auto justify-start md:bottom-10">
             <ButtonDarkMode/>
 
             <ButtonLanguage />
