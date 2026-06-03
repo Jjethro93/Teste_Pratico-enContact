@@ -17,7 +17,7 @@ const toggleDarkMode = () => {
         
     };
 
-    const buttonStyle = "text-amber-50 p-2 border rounded-[35%] bg-none hover:text-amber-600 dark:text-amber-50 dark:hover:text-amber-500";
+    const buttonStyle = "text-amber-50 p-3 border rounded-[35%] bg-none hover:text-amber-600 dark:text-amber-50 dark:hover:text-amber-500";
     
     
     return(

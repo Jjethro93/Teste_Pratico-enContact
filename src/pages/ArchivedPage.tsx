@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import ButtonLanguage from "../components/ButtonLanguage";
 import { useNavigate } from "react-router";
 import ButtonDarkMode from "../components/ButtonDarkMode";
+import Button from "../components/Button";
 
 
 function ArchivedPage() {
@@ -24,7 +25,7 @@ const {user} = useUser()
   return (
     <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-amber-600 dark:bg-gray-900  md:p-6 ${darkMode && "dark:"}`}>
             <div className="fixed z-50 p-2 shadow-md top-28 right-3 md:top-auto md:left-auto md:bottom-10">
-            <button onClick={() => navigate("/home")} className="fixed left-5 bottom-5 cursor-pointer text-amber-600 bg-amber-50 w-20 p-2 rounded-2xl">{t("Voltar")}</button>
+            <button onClick={() => navigate("/home")} className="fixed left-5 bottom-5 cursor-pointer text-amber-600 bg-amber-50 w-20 p-2 rounded-2xl ">{t("VOLTAR")}</button>
             <ButtonDarkMode />
 
             <ButtonLanguage className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border  hover:bg-gray-100 hover:text-amber-600 font-semibold" />

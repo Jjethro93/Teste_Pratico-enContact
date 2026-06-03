@@ -72,7 +72,7 @@ const navigate = useNavigate()
                         </h2>
                     </div>
                     <button className="flex flex-row w-25 justify-between items-center gap-1 border border-amber-100 cursor-pointer dark:border-white h-10.5 p-1.5 mr-3 rounded-lg hover:bg-white hover:text-amber-600 text-white ">
-                         {t("Novo")} 
+                         {t("NOVO")} 
                         <ChevronDown className="text-amber-100 dark:text-amber-50 hover:text-amber-600" />
                     </button>
 
@@ -97,7 +97,7 @@ const navigate = useNavigate()
                      </div>
                      
                     <Button onClick={() => navigate("/archives")} className="font-light text[12px]">
-                       {t("Archivados")}
+                       {t("ARQUIVOS")}
                     </Button>
 
                     </div>
@@ -108,9 +108,9 @@ const navigate = useNavigate()
                 <div className="flex flex-row gap-3 md:gap-5 p-5 items-center ">
                     <input type="checkbox" className="w-4.5 border-2 border-amber-600
                 " />
-                    <Button>{t("Atribuir")}</Button>
-                    <Button onClick={handleArchive}>{t("Arquivar")}</Button>
-                    <Button >{t("Agendar")}</Button>
+                    <Button>{t("ATRIBUIR")}</Button>
+                    <Button onClick={handleArchive}>{t("ARQUIVAR")}</Button>
+                    <Button >{t("AGENDAR")}</Button>
 
 
                 </div>
