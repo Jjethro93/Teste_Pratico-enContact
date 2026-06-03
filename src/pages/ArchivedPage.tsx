@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import ButtonLanguage from "../components/ButtonLanguage";
 import { useNavigate } from "react-router";
 import ButtonDarkMode from "../components/ButtonDarkMode";
-import Button from "../components/Button";
+
 
 
 function ArchivedPage() {
