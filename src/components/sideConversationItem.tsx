@@ -1,6 +1,7 @@
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import { ChevronDownIcon, ChevronUpIcon, UserIcon } from "lucide-react"
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import {MessageCircleMore} from "lucide-react"
 
 
 
@@ -16,12 +17,12 @@ interface contactT {
 }
 
 interface SideConversationProps {
-    onSelectContact: (contact: contactT, submenu:subMenuprops) => void;
+    onSelectContact: (contact: contactT, submenu: subMenuprops) => void;
 }
 
 function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const [isOpen, setIsOpen] = useState<number | null>(null);
     const toggleMenu = (id: number) => {
@@ -79,42 +80,44 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
     return (
 
-        <div>
-            <div className="p-2 ">
 
-                {contacts.map((contact) => (
+        <div >
 
-                    <div key={contact.id}>
+            {contacts.map((contact) => (
 
-                        <button className="flex w-full justify-between" onClick={() => toggleMenu(contact.id)}>
-                            <div className="flex items-center gap-2">
-                                {isOpen === contact.id ? (<ChevronUpIcon size={18} className="text-gray-100 dark:text-amber-50"/>) : (<ChevronDownIcon size={18} className="text-gray-100 dark:text-amber-50" />)}
-                                <span className="text-gray-100 font-medium text-[14px] md:text-2xl hover:text-amber-900 dark:text-amber-50">{t(contact.name)}</span>
-                            </div>
-                            
+                <div key={contact.id}>
+
+                    <div>
+                        <button className="flex items-center justify-between  px-2" onClick={() => toggleMenu(contact.id)}>
+
+                            <UserIcon size={35} className="text-gray-100 dark:text-amber-50" />
+                            <span className="text-gray-100 mr-10 font-medium w-full text-[14px] md:text-2xl  hover:text-amber-900 dark:text-amber-50"> {t(contact.name)}</span>
+                            {isOpen === contact.id ? (<ChevronUpIcon size={38} className="text-gray-100 dark:text-amber-50 transition-all duration-900 ease-in-out" />) : (<ChevronDownIcon size={30} className="text-gray-100 dark:text-amber-50" />)}
                         </button>
+                    </div>
+
+
                     <div
-                    className={`overflow-hidden ${isOpen === contact.id ? "max-h-20 mt-2" : "max-h-0"} transition-max-height duration-300 ease-in-out`}
+                        className={`overflow-hidden ${isOpen === contact.id ? "max-h-20 mt-2" : "max-h-0"}`}
                     >
                         <div className="flex flex-col justify-between pl-8 cursor-pointer list-none">
-                            {contact.subMenus.map((submenu)=>(
-                                <li key={submenu.id} onClick={() => onSelectContact(contact, submenu)} className="text-gray-200 hover:text-amber-800">{t(submenu.name)}</li>
+                            {contact.subMenus.map((submenu) => (
+                                <li key={submenu.id} onClick={() => onSelectContact(contact, submenu)} className="flex flex-row gap-3 items-center text-gray-200 hover:text-amber-800"> <MessageCircleMore size={20}/> { t(submenu.name)}</li>
                             ))}
-                        
-                        
+
+
                         </div>
-                       
-                    </div>
-
 
                     </div>
 
 
-                ))}
+                </div>
 
-            </div>
+
+            ))}
 
         </div>
+
 
     )
 

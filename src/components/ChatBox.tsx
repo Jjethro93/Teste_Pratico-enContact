@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchItems } from "../services/api";
 import { useArchive } from "../context/archiveContext";
 import { useTranslation } from "react-i18next";
-
+import { MessageCircleMore } from "lucide-react";
 
 
 interface subMenuItemProps {
@@ -70,7 +70,7 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
 
 
     return (
-        <div className="bg-gray-100 dark:bg-gray-600 rounded-b-2xl min-h-40">
+        <div className=" bg-gray-100 dark:bg-gray-800 rounded-b-2xl min-h-40">
 
             <div className="flex flex-col ">
 
@@ -80,8 +80,8 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
                     return (
 
 
-                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-b-xl group hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors ">
-                        <div className="flex items-center gap-4 w-full ">
+                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-b-3xl group hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors w-full ">
+                        <div className="flex items-center gap-4 w-full"> 
 
                             <div className="flex items-center justify-center w-10 h-10 relative shrink-0">
 
@@ -105,7 +105,7 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
                                     <h2 className="font-bold">{item.name}</h2>
 
                                     <p>{t(item.subject)}</p>
-                                    <p>{t(activeSubmenu?.name ?? "")}</p>
+                                    <p className="flex flex-row gap-2"> <MessageCircleMore/> {t(activeSubmenu?.name ?? "")}</p>
 
                                 </div>
                                 <div className="flex flex-col items-end w-30 pr-3">
@@ -116,7 +116,7 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
 
                                         {item.users.map((user, index) => (
                                             <div key={index}
-                                                className=" flex relative items-center justify-center text-[12px] rounded-full bg-amber-600 text-amber-50 w-8 h-8 border-2 border-white">{user}</div>
+                                                className=" flex relative items-center justify-center text-[8px] md:text-[12px] rounded-full bg-amber-600 text-amber-50 dark:bg-amber-50 dark:border-gray-800 dark:text-amber-700 w-6 h-6 md:w-8 md:h-8 border-2  border-white">{user}</div>
                                         ))}</div>
                                 </div>
 

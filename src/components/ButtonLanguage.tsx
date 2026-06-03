@@ -8,9 +8,11 @@ const ButtonLanguage = ({ className }: { className?: string }) => {
         i18n.changeLanguage(newLanguage);
     };
 
+    const buttonStyle = "text-amber-50 p-2 border rounded-[35%] bg-none hover:text-amber-600 dark:text-amber-50 dark:hover:text-amber-500";
+
     return (
-        <div className={`flex flex-row ${className ?? ""} text-sm font-medium text-white border  hover:bg-gray-100 hover:text-amber-600 dark:hover:bg-gray-100 dark:hover:text-amber-600 rounded-[20%] transition-all ease-in-out cursor-pointer`}>
-            <button onClick={toggleLanguage} className="text-amber-50 p-1 rounded-[20%] bg-amber-600 hover:text-amber-600 hover:bg-amber-50 dark:bg-gray-500 dark:text-amber-50 dark:hover:text-amber-500">
+        <div className={`flex flex-row ${className ?? ""} transition-all ease-in-out cursor-pointer`}>
+            <button onClick={toggleLanguage} className={buttonStyle}>
                 {i18n.language === "pt" ? "EN" : "PT"}
             </button>
         </div>

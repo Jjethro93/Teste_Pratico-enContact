@@ -56,14 +56,14 @@ const navigate = useNavigate()
     return (
 
 
-        <div className={`flex flex-col gap-2 md:flex-row w-full md:min-h-screen bg-amber-600 dark:bg-gray-900  md:p-6 ${darkMode && "dark:"}`}>
-            <div className="fixed z-50 p-2 shadow-md top-28 right-3 md:top-auto md:left-auto justify-start md:bottom-10">
+        <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-700 to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700  md:p-6 ${darkMode && "dark:"}`}>
+            <div className="flex flex-col gap-2 fixed z-50 p-2 top-22 right-1 md:top-auto md:left-auto justify-start md:bottom-10">
             <ButtonDarkMode/>
 
-            <ButtonLanguage className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border  hover:bg-gray-100 hover:text-amber-600 font-semibold" />
+            <ButtonLanguage />
             </div>
 
-            <div className="flex flex-col sticky z-10 bg-amber-600 dark:bg-gray-900 md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
+            <div className="flex flex-col sticky z-10 bg-none md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
                 <nav className="flex flex-row justify-between w-full mt-4 mb-3 gap-2 ">
                     <div className="flex flex-row  items-center  animate-[fadeIn_1.5s_ease-in-out_forwards] gap-2">
                         <UserMenu />
@@ -71,15 +71,15 @@ const navigate = useNavigate()
                             {user?.name}
                         </h2>
                     </div>
-                    <div className="flex flex-row items-center gap-1 border-2 border-amber-100 dark:border-white h-10.5 p-1.5 mr-3 rounded-l-lg ">
-                        <button className="text-amber-100 dark:text-amber-50 font-medium"> {t("Novo")} </button>
-                        <ChevronDown className="text-amber-100 dark:text-amber-50" />
-                    </div>
+                    <button className="flex flex-row w-25 justify-between items-center gap-1 border border-amber-100 cursor-pointer dark:border-white h-10.5 p-1.5 mr-3 rounded-lg hover:bg-white hover:text-amber-600 text-white ">
+                         {t("Novo")} 
+                        <ChevronDown className="text-amber-100 dark:text-amber-50 hover:text-amber-600" />
+                    </button>
 
 
                 </nav>
 
-                <hr className="border-gray-100 border-2 dark:border-cyan-800 dark:border-b-cyan-950  "></hr>
+            
 
                 <section>
                     <SideConversation onSelectContact={handleClick} />
@@ -88,7 +88,7 @@ const navigate = useNavigate()
 
 
             </div>
-            <section className=" w-full md:w-[80%] h-[70%] md:h-full bg-gray-100 dark:bg-cyan-950 rounded-t-2xl md:rounded-tl-none md:rounded-bl-2xl mt-3 md:mt-0">
+            <section className=" w-full md:w-[70%] h-[70%] md:h-full z-20 bg-gray-100/90  dark:bg-gray-700 rounded-2xl mt-3 md:mt-0 shadow-md">
                <div className="flex flex-col justify-between gap-3 m-3.5">
                 <div className="flex flex-row items-center justify-between gap-1 border-2 border-none  ">
                     <input type="search" placeholder={t("Pesquisar")} className="w-full border border-amber-600 hover:border-2 outline-none bg-gray-200 h-10.5
@@ -103,7 +103,7 @@ const navigate = useNavigate()
                     </div>
                
 
-                <hr className="border-amber-600 border-2 border-t-gray-300 "></hr>
+            
 
                 <div className="flex flex-row gap-3 md:gap-5 p-5 items-center ">
                     <input type="checkbox" className="w-4.5 border-2 border-amber-600
@@ -116,7 +116,7 @@ const navigate = useNavigate()
                 </div>
 
 
-                <div className="w-full h-full mt-4">
+                <div className="w-full h-full mt-6">
 
 
                     <ChatBox activeContact={activeContact} activeSubmenu={activeSubmenu} />

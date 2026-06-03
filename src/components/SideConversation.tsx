@@ -24,7 +24,7 @@ function SideConversation({ onSelectContact }: SideConversationProps) {
 
     return (
         <div>
-            <div className="flex flex-row justify-betweengap-2 mt-3 pb-3 mb-4">
+            <div className="flex flex-row justify-between gap-2 mt-3 pb-3 mb-4 mr-4">
                 <h2 className="font-medium text-gray-100 dark:text-amber-50">{t("Favoritas")} </h2>
                 <div className="flex items-center gap-4">
                  <EllipsisVertical className="text-gray-100 dark:text-amber-50" /> 
@@ -32,7 +32,7 @@ function SideConversation({ onSelectContact }: SideConversationProps) {
                 </div>
                 
             </div>
-            <div>
+            <div >
                 <SideConversationItem onSelectContact={onSelectContact} />
             </div>
         </div>

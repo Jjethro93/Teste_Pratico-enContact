@@ -24,7 +24,7 @@ const UserMenu = () => {
 
             </div>
 
-            <div onClick={() => setIsOpen(false)} className={`flex flex-col z-index-30 decoration-0 border border-amber-50 text-white bg-amber-600 w-full dark:bg-gray-800 h-66 rounded-b-3xl gap-4 p-5 absolute top-0 left-0 ${isOpen ? "block" : "hidden"} `}>
+            <div onClick={() => setIsOpen(false)} className={`flex flex-col z-index-30 decoration-0 text-white bg-amber-600 w-full dark:bg-gray-800 h-66 rounded-b-3xl gap-4 p-5 absolute top-0 left-0 ${isOpen ? "block" : "hidden"} `}>
                 <div className="flex flex-row items-center gap-1">
 
                     <img src={userprofile} alt="Profile-Image" className="w-10 rounded-full " />

@@ -9,7 +9,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 
 const Button = ({
     children,
-    isloading = false,
     ...props
 }: ButtonProps) => {
 
@@ -19,7 +18,7 @@ return(
         
         <button type="button" 
         {...props}
-        className= ' border border-amber-600 dark:border-amber-50 text-amber-500 dark:text-amber-50 p-1.5 w-[100] px-3.5 rounded-[8%] cursor-pointer items-center justify-center hover:bg-amber-600 hover:scale-110 hover:text-amber-50 dark:hover:bg-gray-500  shadow-amber-700'> 
+        className= ' border text-sm border-amber-600 dark:border-amber-50 text-amber-500 dark:text-amber-50 py-1 w-24 px-3.5 rounded-2xl cursor-pointer items-center justify-center hover:bg-amber-600 hover:scale-110 hover:text-amber-50 dark:hover:bg-gray-500  shadow-amber-700'> 
         {children} 
         
         </button>

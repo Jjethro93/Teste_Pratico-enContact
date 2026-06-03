@@ -16,10 +16,12 @@ const toggleDarkMode = () => {
         document.documentElement.classList.toggle("dark", newMode);
         
     };
+
+    const buttonStyle = "text-amber-50 p-2 border rounded-[35%] bg-none hover:text-amber-600 dark:text-amber-50 dark:hover:text-amber-500";
     
     
     return(
-            <button onClick={toggleDarkMode} className=" cursor-pointer md:left-10 rounded-[20%] transition-all ease-in-out text-white border p-1 bg-amber-600 hover:bg-amber-50 hover:text-amber-600 font-semibold">
+            <button onClick={toggleDarkMode} className={buttonStyle}>
                 {darkMode ? <Sun size={15} /> : <Moon size={15} />}
             </button>
         )
