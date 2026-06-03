@@ -1,17 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router"
+import { Routes, Route } from "react-router"
 import { ArchiveProvider } from "../context/archiveContext";
 import Login from "../pages/Login"
 import MainPage from "../pages/MainPage"
 import ArchivedPage from "../pages/ArchivedPage";
 import { UserProvider } from "../context/userContext"; 
 import PrivateRoute from "./PrivateRoute";
-
+import { HashRouter } from "react-router";
 
 
 const AppRoutes = () => {
 
     return (
-    <BrowserRouter>
+    <HashRouter>
         <UserProvider>
             <ArchiveProvider>
                 <Routes>
@@ -42,7 +42,7 @@ const AppRoutes = () => {
                 </Routes>
             </ArchiveProvider>
         </UserProvider>
-    </BrowserRouter>
+    </HashRouter>
 );
 
 }
