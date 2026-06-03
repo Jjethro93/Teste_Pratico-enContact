@@ -72,7 +72,7 @@ const Login = () => {
                     </div>
 
 
-                    <button className="bg-amber-50 rounded-lg w-full h-10 text-amber-500 hover:bg-amber-800 hover:text-amber-50" type="submit"> {t("Logar")} </button>
+                    <button className="bg-amber-50 rounded-lg w-full h-10 text-amber-500 hover:bg-amber-800 hover:text-amber-50" type="submit"> {t("LOGAR")} </button>
 
                 </form>
 
