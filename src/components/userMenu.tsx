@@ -12,7 +12,6 @@ import { useUser } from "../context/userContext";
 const UserMenu = () => {
 
     const { t } = useTranslation();
-    const { user } = useUser();
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
