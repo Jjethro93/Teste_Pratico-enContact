@@ -2,6 +2,7 @@ import { EllipsisVertical } from "lucide-react"
 import SideConversationItem from "./sideConversationItem"
 import { useTranslation } from "react-i18next";
 
+
 interface subMenuprops {
     id: number;
     name: string;
@@ -24,7 +25,8 @@ function SideConversation({ onSelectContact }: SideConversationProps) {
 
     return (
         <div>
-            <div className="flex flex-row justify-between gap-2 mt-3 pb-3 mb-4 mr-4">
+            
+            <div className="flex flex-row justify-between gap-2 mt-3 ml-4 ">
                 <h2 className="font-medium text-gray-100 dark:text-amber-50">{t("Favoritas")} </h2>
                 <div className="flex items-center gap-4">
                  <EllipsisVertical className="text-gray-100 dark:text-amber-50" /> 

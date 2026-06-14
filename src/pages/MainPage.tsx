@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import Button from "../components/Button";
 import ChatBox from "../components/ChatBox";
 import SideConversation from "../components/SideConversation";
@@ -38,7 +38,13 @@ export default function MainPage() {
 
 const navigate = useNavigate()
     const [activeContact, setActiveContact] = useState<contactT | null>(null);
+    const [searchText, setSearchText] = useState<string>("");
     const [activeSubmenu, setActiveSubmenu] = useState<subMenuprops | null>(null);
+
+    const handleSearchChange = (event:ChangeEvent<HTMLInputElement>):void => {
+        setSearchText(event.target.value);
+       
+    };
 
 
     function handleClick(contact: contactT, submenu: subMenuprops) {
@@ -56,16 +62,18 @@ const navigate = useNavigate()
     return (
 
 
-        <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-700 to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700  md:p-6 ${darkMode && "dark:"}`}>
+        <div className={`flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-700
+         to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
+         ${darkMode && "dark:"}`}>
             <div className="flex flex-col gap-2 fixed z-50 p-2 top-40 right-1 md:top-auto md:left-auto justify-start md:bottom-10">
             <ButtonDarkMode/>
 
             <ButtonLanguage />
             </div>
 
-            <div className="flex flex-col sticky z-10 bg-none md:z-0 w-full md:w-[25%] h-[10%] md:h-full top-0 p-3 md:p-0 ">
+            <div className="flex flex-col p-4 sticky z-10 bg-none md:z-0 w-full md:w-[25%] h-auto md:h-full top-0 md:p-8 ">
                 <nav className="flex flex-row justify-between w-full mt-4 mb-3 gap-2 ">
-                    <div className="flex flex-row  items-center  animate-[fadeIn_1.5s_ease-in-out_forwards] gap-2">
+                    <div className="flex flex-row  items-center gap-2">
                         <UserMenu />
                         <h2 className="font-extrabold text-gray-100 dark:text-white">
                             {user?.name}
@@ -88,10 +96,14 @@ const navigate = useNavigate()
 
 
             </div>
-            <section className=" w-full md:w-[70%] h-[70%] md:h-full z-20 bg-gray-100/90  dark:bg-gray-700 rounded-2xl mt-3 md:mt-0 shadow-md">
+            <section className=" w-full h-[70%] md:h-full z-20 bg-gray-100/90  dark:bg-gray-700 mt-3 md:mt-0 shadow-md">
                <div className="flex flex-col justify-between gap-3 m-3.5">
                 <div className="flex flex-row items-center justify-between gap-1 border-2 border-none  ">
-                    <input type="search" placeholder={t("Pesquisar")} className="w-full border border-amber-600 hover:border-2 outline-none bg-gray-200 h-10.5
+                    <input type="search" 
+                    placeholder={t("Pesquisar")} 
+                    onChange={handleSearchChange}
+                    value={searchText}
+                    className="w-full border border-amber-600 hover:border-2 outline-none bg-gray-200 h-10.5
                      p-2.5 rounded-2xl placeholder:text-amber-300 placeholder:pl-2 dark:placeholder:text-gray-500 dark:border-0 dark:hover:border-gray-500 " />
                     <ChevronDown color="#efc82b" />
                      </div>
@@ -119,7 +131,7 @@ const navigate = useNavigate()
                 <div className="w-full h-full mt-6">
 
 
-                    <ChatBox activeContact={activeContact} activeSubmenu={activeSubmenu} />
+                    <ChatBox activeContact={activeContact} activeSubmenu={activeSubmenu} searchText={searchText} />
 
 
                 </div>

@@ -33,10 +33,11 @@ interface contactT {
 interface ChatBoxProps {
     activeContact: contactT | null;
     activeSubmenu: subMenuprops | null;
+    searchText: string;
 
 }
 
-function ChatBox({ activeSubmenu }: ChatBoxProps) {
+function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
 
     const [items, setItems] = useState<subMenuApiProps[]>([]);
     const { archivedItems, checkedItems } = useArchive();
@@ -50,18 +51,31 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
             const submenuData: subMenuApiProps[] = await fetchItems();
             setItems(submenuData);
 
-           
-        }
+        }            
         loadData();
+    
+    
 
 
     }, []);
 
 
-   const filteredItems = items?.filter((item) =>
-       item.id === activeSubmenu?.id).flatMap((item) => item.subMenuItems);
+  const selectedId = activeSubmenu?.id ?? items[0]?.id;
+const filteredItems = items
+    .filter((item) => item.id === selectedId)
+    .flatMap((item) => item.subMenuItems);
 
-   const visibleItems = filteredItems.filter( item =>!archivedItems.some(archived => archived.id === item.id
+
+    
+  const searchedItems = filteredItems.filter((item) =>
+  item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+  item.subject.toLowerCase().includes(searchText.toLowerCase()) ||
+  item.owner.toLowerCase().includes(searchText.toLowerCase())
+);
+
+
+
+   const visibleItems = searchedItems.filter( item =>!archivedItems.some(archived => archived.id === item.id
     )
 );
 
@@ -74,20 +88,25 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
 
             <div className="flex flex-col ">
 
-                {visibleItems.length===0 ? (<h1 className="flex justify-center mt-10 text-2xl md:text-3xl font-semibold text-amber-600 dark:text-amber-50 items-center">{t("Por favor, selecione uma conta")}</h1>)
+                {visibleItems.length===0 ? (<h1 className="flex justify-center mt-10 text-2xl md:text-3xl font-semibold text-amber-600
+                 dark:text-amber-50 items-center">{t("Por favor, selecione uma conta")}</h1>)
                  : (visibleItems.map((item) => {
                     const isChecked = checkedItems.some((checkedItem: subMenuItemProps) => checkedItem.id === item.id);
+                   
                     return (
 
 
-                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-b-3xl group hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors w-full ">
+                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-b-3xl group
+                     hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors w-full ">
                         <div className="flex items-center gap-4 w-full"> 
 
                             <div className="flex items-center justify-center w-10 h-10 relative shrink-0">
 
-                                <div onClick={() => handleCheckItem(item)} className={` md:group-hover:hidden w-8 h-8 rounded-full bg-amber-600 dark:bg-amber-50 flex items-center justify-center
+                                <div onClick={() => handleCheckItem(item)} className={` md:group-hover:hidden w-8 h-8 rounded-full
+                                 bg-amber-600 dark:bg-amber-50 flex items-center justify-center
                                  text-white dark:text-amber-900 text-xs cursor-pointer 
-                                ${ isChecked  ? "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" : "bg-amber-600 dark:bg-amber-50 text-white dark:text-amber-900"}`}
+                                ${ isChecked  ? "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" : 
+                                    "bg-amber-600 dark:bg-amber-50 text-white dark:text-amber-900"}`}
                                     
                                     >
                                     {item.owner} </div>
@@ -105,7 +124,7 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
                                     <h2 className="font-bold">{item.name}</h2>
 
                                     <p>{t(item.subject)}</p>
-                                    <p className="flex flex-row gap-2"> <MessageCircleMore/> {t(activeSubmenu?.name ?? "")}</p>
+                                    <p className="flex flex-row gap-2"> <MessageCircleMore/>  {t(activeSubmenu?.name ?? "")}</p>
 
                                 </div>
                                 <div className="flex flex-col items-end w-30 pr-3">
@@ -116,7 +135,9 @@ function ChatBox({ activeSubmenu }: ChatBoxProps) {
 
                                         {item.users.map((user, index) => (
                                             <div key={index}
-                                                className=" flex relative items-center justify-center text-[8px] md:text-[12px] rounded-full bg-amber-600 text-amber-50 dark:bg-amber-50 dark:border-gray-800 dark:text-amber-700 w-6 h-6 md:w-8 md:h-8 border-2  border-white">{user}</div>
+                                                className=" flex relative items-center justify-center text-[8px] md:text-[12px] 
+                                                rounded-full bg-amber-600 text-amber-50 dark:bg-amber-50 dark:border-gray-800
+                                                 dark:text-amber-700 w-6 h-6 md:w-8 md:h-8 border-2  border-white">{user}</div>
                                         ))}</div>
                                 </div>
 
