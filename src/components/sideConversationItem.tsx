@@ -94,28 +94,42 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
                     <div key={contact.id}>
 
-                        <div>
-                            <button className="flex items-center justify-between  px-2" onClick={() => toggleMenu(contact.id)}>
+                        <div className=" rounded-xl md:mt-4  md:p-3 shadow-xl border border-white/10 backdrop-blur-sm" >
+                            <button className="flex items-center justify-between md:w-full" onClick={() => toggleMenu(contact.id)}>
+                                <div className="flex items-center">
+                                    <UserIcon size={34} className=" shrink-0 m-2 w-9 text-white rounded-xl dark:text-amber-50 shadow-xl border p-1 
+                                 border-white/10 backdrop-blur-sm"/>
+                                    <span className="text-white mr-10 w-full text-[10px] md:text-xl 
+                                 hover:text-amber-900 dark:text-amber-50"> {t(contact.name)}</span>
+                                </div>
+                                {isOpen === contact.id ? (<ChevronUpIcon size={30} className="text-white dark:text-amber-50 transition-all duration-900 ease-in-out" />) : (<ChevronDownIcon size={30} className="text-gray-100 dark:text-amber-50" />)}
 
-                                <UserIcon size={35} className="text-gray-100 dark:text-amber-50" />
-                                <span className="text-gray-100 mr-10 font-medium w-full text-[14px] md:text-2xl  hover:text-amber-900 dark:text-amber-50"> {t(contact.name)}</span>
-                                {isOpen === contact.id ? (<ChevronUpIcon size={38} className="text-gray-100 dark:text-amber-50 transition-all duration-900 ease-in-out" />) : (<ChevronDownIcon size={30} className="text-gray-100 dark:text-amber-50" />)}
+                                
+
                             </button>
+
+                            <div
+                                    className={`overflow-hidden ${isOpen === contact.id ? "max-h-auto mt-2 flex flex-row rounded-xl " : "max-h-0"}`}
+                                >
+                                    <ul className="flex flex-col justify-between cursor-pointer list-none gap-1 ml-6">
+                                        {contact.subMenus.map((submenu) => (
+                                            <li key={submenu.id} onClick={() => onSelectContact(contact, submenu)} 
+                                            className="flex flex-row md:w-54 p-3 rounded-xl gap-2 items-center text-white hover:bg-amber-500/40"> 
+                                            <MessageCircleMore size={20} /> {t(submenu.name)}</li>
+                                        ))}
+
+
+                                    </ul>
+
+                                </div>
+
+
+
+
                         </div>
 
 
-                        <div
-                            className={`overflow-hidden ${isOpen === contact.id ? "max-h-60 mt-2" : "max-h-0"}`}
-                        >
-                            <div className="flex flex-col justify-between pl-8 cursor-pointer list-none">
-                                {contact.subMenus.map((submenu) => (
-                                    <li key={submenu.id} onClick={() => onSelectContact(contact, submenu)} className="flex flex-row gap-3 items-center text-gray-200 hover:text-amber-800"> <MessageCircleMore size={20} /> {t(submenu.name)}</li>
-                                ))}
 
-
-                            </div>
-
-                        </div>
 
 
                     </div>
@@ -135,45 +149,50 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
             </div>
 
             {isOpenMobile && (
-    <div className="md:hidden mt-4 rounded-lg w-90 p-4">
-        {contacts.map((contact) => (
-            <div key={contact.id} className="mb-4">
-                <button
-                    className="flex items-center justify-between w-full"
-                    onClick={() => toggleMenu(contact.id)}
-                >
-                    <UserIcon size={20} className="text-gray-100 dark:text-amber-50" />
-                    <span className="text-white">
-                        {t(contact.name)}
-                    </span>
-
-                    {isOpen === contact.id ? (
-                        <ChevronUpIcon size={20} className="text-white" />
-                    ) : (
-                        <ChevronDownIcon size={20} className="text-white" />
-                    )}
-                </button>
-
-                {isOpen === contact.id && (
-                    <ul className="pl-4 mt-2">
-                        {contact.subMenus.map((submenu) => (
-                            <li
-                                key={submenu.id}
-                                onClick={() => {
-                                    onSelectContact(contact, submenu);
-                                    setIsOpenMobile(false);
-                                }}
-                                className="text-gray-300 py-1 cursor-pointer hover:text-amber-500"
+                <div className="md:hidden mt-4 rounded-lg w-90 p-4">
+                    {contacts.map((contact) => (
+                        <div key={contact.id} className="mb-4">
+                            <div className=" p-4 rounded-xl shadow-xl border border-white/10 backdrop-blur-sm" >
+                            <button
+                                className="flex items-center justify-between w-full"
+                                onClick={() => toggleMenu(contact.id)}
                             >
-                                {t(submenu.name)}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-        ))}
-    </div>
-)}
+                                <div className="flex items-center gap-2">
+                                <UserIcon size={20} className="text-gray-100 dark:text-amber-50" />
+                                <span className="text-white">
+                                    {t(contact.name)}
+                                </span>
+
+                                </div>
+
+                                {isOpen === contact.id ? (
+                                    <ChevronUpIcon size={20} className="text-white" />
+                                ) : (
+                                    <ChevronDownIcon size={20} className="text-white" />
+                                )}
+                            </button>
+
+                            {isOpen === contact.id && (
+                                <ul className="pl-4 mt-2">
+                                    {contact.subMenus.map((submenu) => (
+                                        <li
+                                            key={submenu.id}
+                                            onClick={() => {
+                                                onSelectContact(contact, submenu);
+                                                setIsOpenMobile(false);
+                                            }}
+                                            className="text-white py-1 rounded-xl gap-2 items-center active:bg-amber-500/40"
+                                        >
+                                            {t(submenu.name)}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
 
         </div>
 

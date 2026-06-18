@@ -1,9 +1,11 @@
 
-import { ChevronRight, Settings, FileQuestionMark, LogOut, Pencil } from "lucide-react"
+import { ChevronRight, Settings, FileQuestionMark, LogOut, Pencil, Plus } from "lucide-react"
 import userprofile from "../assets/transferir (2).jpg"
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useUser } from "../context/userContext";
+
 
 
 
@@ -14,37 +16,58 @@ const UserMenu = () => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+    const { user } = useUser()
 
     return (
-        <div className="relative">
+        <div className="relative ">
 
-            <div>
-                <img src={userprofile} alt="Profile-Image" className="w-10 rounded-full cursor-pointer" onClick={() => setIsOpen(true)} />
-            </div>
             
 
-            <div onClick={() => setIsOpen(false)} className={` flex flex-col z-30 decoration-0 text-white bg-amber-600 h-auto
-             dark:bg-gray-800 gap-4 absolute top-14 left-0 overflow-hidden
-                transition-all duration-700 ease-in-out ${isOpen ? "w-44 p-5" : "w-0 p-0"}`}>
+            <div className="flex flex-row gap-3 items-center justify-between bg-white dark:bg-gray-800  rounded-xl p-5 w-70 shadow-xl border border-white/10 backdrop-blur-sm">
+                <img src={userprofile} alt="Profile-Image" className="w-12 rounded-full border border-amber-600 cursor-pointer" onClick={() => setIsOpen(prev => !prev)} />
+                <h2 className="font-extrabold text-shadow-gray-400 dark:text-white">
+                    {user?.name}
+                </h2>
+                <button className="flex flex-row w-25 gap-1 justify-between items-center
+                bg-amber-600 text-white hover:bg-red-500/10 cursor-pointer px-4
+                 border dark:border-white h-10.5 p-1.5 mr-3 rounded-lg
+                  dark:bg-linear-to-r dark:from-gray-700 dark:to-gray-900 
+                 dark:text-amber-50 hover:scale-105">
+                      <Plus  /> {t("NOVO")}
+                        
+                        
+                 </button>
+            </div>
 
-                <a href="#" className="flex flex-row items-baseline justify-between gap-3 hover:text-amber-950 dark:hover:text-amber-600">
-                    <Pencil size={20} />
+
+            <div className={` flex flex-col justify-center z-30 decoration-none bg-white shadow-xl border
+             border-white/10 backdrop-blur-sm gap-3 md:gap-4 border-b-gray-500 p-4
+             dark:bg-gray-800 absolute top-23 left-0 overflow-hidden rounded-xl h-auto w-70 px-4
+                transition-all duration-700 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}>
+                <label className="text-gray-800 dark:text-white"> CONTA
+                <a href="#" className="flex flex-row justify-between gap-3 text-gray-500 text-[13px] hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
+                    <Pencil size={25} />
                     <p className="w-full">{t("Editar perfil")} </p>
                     <span><ChevronRight size={12} /></span>
                 </a>
-                <a href="#" className="flex flex-row items-center justify-between gap-3  hover:text-amber-950 dark:hover:text-amber-600">
-                    <Settings size={20} />
+                <a href="#" className="flex flex-row gap-3 justify-between text-gray-500 text-[13px]  hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
+                    <Settings size={25} />
                     <p className="w-full">{t("Configurações")}</p>
                     <span><ChevronRight size={12} /></span>
                 </a>
-                <a href="#" className="flex flex-row items-center justify-between gap-3  hover:text-amber-950 dark:hover:text-amber-600">
-                    <FileQuestionMark size={20} />
+                </label>
+                <label className="text-gray-700 dark:text-white" >SUPORTE
+                <a href="#" className="flex flex-row gap-3 justify-between text-[13px] text-gray-500 hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
+                    <FileQuestionMark size={25} />
                     <p className="w-full">{t("Ajuda")}</p>
                     <span><ChevronRight size={12} /></span>
                 </a>
+                </label>
 
-                <a onClick={() => navigate("/")} className="flex flex-row items-center justify-between gap-3  hover:text-amber-950 dark:hover:text-amber-600">
-                    <LogOut size={20} />
+                <hr className="text-gray-600/60" />
+
+                <a onClick={() => navigate("/")} className="flex gap-4 flex-row items-center justify-between text-red-400 hover:bg-red-500/10 p-3 rounded-2xl items-center hover:text-amber-950 dark:hover:text-amber-600">
+                    <LogOut size={25} />
                     <p className="w-full">{t("Sair")}</p>
                     <span><ChevronRight size={12} /></span>
                 </a>

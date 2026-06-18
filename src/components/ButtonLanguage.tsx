@@ -8,7 +8,8 @@ const ButtonLanguage = ({ className }: { className?: string }) => {
         i18n.changeLanguage(newLanguage);
     };
 
-    const buttonStyle = "text-amber-50 p-2 border rounded-[35%] bg-none hover:text-amber-600 dark:text-amber-50 dark:hover:text-amber-500";
+    const buttonStyle = "text-white rounded-2xl items-center w-11 h-11 text-[14px] dark:text-amber-50 dark:hover:text-amber-500 bg-white/3 shadow-xl border border-white/10 backdrop-blur-sm rounded-2xl";
+    
 
     return (
         <div className={`flex flex-row ${className ?? ""} transition-all ease-in-out cursor-pointer`}>

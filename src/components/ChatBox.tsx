@@ -84,9 +84,9 @@ const filteredItems = items
 
 
     return (
-        <div className=" bg-gray-100 dark:bg-gray-800 rounded-b-2xl min-h-40">
+        <div className=" bg-gray-100 dark:bg-gray-800 min-h-40 ">
 
-            <div className="flex flex-col ">
+            <div className="flex flex-col gap-4 m-4 ">
 
                 {visibleItems.length===0 ? (<h1 className="flex justify-center mt-10 text-2xl md:text-3xl font-semibold text-amber-600
                  dark:text-amber-50 items-center">{t("Por favor, selecione uma conta")}</h1>)
@@ -96,13 +96,13 @@ const filteredItems = items
                     return (
 
 
-                    <div key={item.id} className="flex items-center border-b border-amber-200 px-5 py-3 rounded-b-3xl group
+                    <div key={item.id} className="flex items-center shadow-xl border border-white/10 backdrop-blur-sm  px-5 py-3 rounded-xl group
                      hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors w-full ">
                         <div className="flex items-center gap-4 w-full"> 
 
-                            <div className="flex items-center justify-center w-10 h-10 relative shrink-0">
+                            <div className="flex items-center justify-center w-15 h-15 md:w-20 md:h-20 relative shrink-0">
 
-                                <div onClick={() => handleCheckItem(item)} className={` md:group-hover:hidden w-8 h-8 rounded-full
+                                <div onClick={() => handleCheckItem(item)} className={` md:group-hover:hidden w-10 h-10 md:w-13 md:h-13 rounded-full
                                  bg-amber-600 dark:bg-amber-50 flex items-center justify-center
                                  text-white dark:text-amber-900 text-xs cursor-pointer 
                                 ${ isChecked  ? "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" : 
