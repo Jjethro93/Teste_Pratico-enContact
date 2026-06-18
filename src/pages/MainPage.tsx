@@ -91,15 +91,19 @@ export default function MainPage() {
             <section className=" md:w-full md:h-full z-10 bg-gray-100 pt-6  dark:bg-gray-700 mt-3 md:mt-0 
             shadow-md">
                 <div className="flex flex-col justify-between gap-3 m-3.5">
-                    <div className="flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
+                    <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
                         <input type="search"
                             placeholder={t("Pesquisar")}
                             onChange={handleSearchChange}
                             value={searchText}
-                            className="absolute border border-none hover:border-2 outline-none bg-white h-10.5
-                     p-2.5 rounded-2xl placeholder:text-amber-600 placeholder:pl-7 w-70 md:w-150 overflow-hidden dark:placeholder:text-gray-500 
-                     dark:border-0 dark:hover:border-gray-500 " />
-                        <Search className="relative top-0 left-2 text-amber-600 dark:text-gray-600/60 " />
+                            className="border-none hover:border-2 outline-none bg-white h-10.5
+                     p-2.5 pl-10 rounded-2xl placeholder:text-gray-500 
+                     w-70 md:w-150 overflow-hidden dark:placeholder:text-gray-500 
+                     dark:border-0 dark:hover:border-gray-500"/>
+                        <Search
+                            className="absolute left-3 text-amber-600 dark:text-gray-600/60
+                            pointer-events-none transition-all duration-200"
+                        />
                         <ChevronDown color="#f18811" />
                     </div>
 

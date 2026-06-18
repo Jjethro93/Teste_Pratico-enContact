@@ -43,7 +43,7 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
     const { archivedItems, checkedItems } = useArchive();
     const { t } = useTranslation();
 
-    
+
 
 
     useEffect(() => {
@@ -51,36 +51,36 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
             const submenuData: subMenuApiProps[] = await fetchItems();
             setItems(submenuData);
 
-        }            
+        }
         loadData();
-    
-    
+
+
 
 
     }, []);
 
 
-  const selectedId = activeSubmenu?.id ?? items[0]?.id;
-const filteredItems = items
-    .filter((item) => item.id === selectedId)
-    .flatMap((item) => item.subMenuItems);
-
-
-    
-  const searchedItems = filteredItems.filter((item) =>
-  item.name.toLowerCase().includes(searchText.toLowerCase()) ||
-  item.subject.toLowerCase().includes(searchText.toLowerCase()) ||
-  item.owner.toLowerCase().includes(searchText.toLowerCase())
-);
+    const selectedId = activeSubmenu?.id ?? items[0]?.id;
+    const filteredItems = items
+        .filter((item) => item.id === selectedId)
+        .flatMap((item) => item.subMenuItems);
 
 
 
-   const visibleItems = searchedItems.filter( item =>!archivedItems.some(archived => archived.id === item.id
+    const searchedItems = filteredItems.filter((item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.subject.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.owner.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+
+
+    const visibleItems = searchedItems.filter(item => !archivedItems.some(archived => archived.id === item.id
     )
-);
+    );
 
 
-    const {handleCheckItem} = useArchive()
+    const { handleCheckItem } = useArchive()
 
 
     return (
@@ -88,65 +88,80 @@ const filteredItems = items
 
             <div className="flex flex-col gap-4 m-4 ">
 
-                {visibleItems.length===0 ? (<h1 className="flex justify-center mt-10 text-2xl md:text-3xl font-semibold text-amber-600
-                 dark:text-amber-50 items-center">{t("Por favor, selecione uma conta")}</h1>)
-                 : (visibleItems.map((item) => {
-                    const isChecked = checkedItems.some((checkedItem: subMenuItemProps) => checkedItem.id === item.id);
-                   
-                    return (
+                {visibleItems.length === 0 ? (
+                    <h1
+                        className="flex justify-center mt-10 text-2xl md:text-3xl 
+                    font-semibold text-amber-600
+                 dark:text-amber-50 items-center shadow-xl
+                     border border-white/10 backdrop-blur-sm ">
+                        {t("Por favor, selecione uma conta")}
+                    </h1>)
+                    : (visibleItems.map((item) => {
+                        const isChecked = checkedItems.some((checkedItem: subMenuItemProps) => checkedItem.id === item.id);
+
+                        return (
 
 
-                    <div key={item.id} className="flex items-center shadow-xl border border-white/10 backdrop-blur-sm  px-5 py-3 rounded-xl group
-                     hover:bg-amber-50 dark:hover:bg-gray-500 transition-colors w-full ">
-                        <div className="flex items-center gap-4 w-full"> 
+                            <div key={item.id} className="flex items-center shadow-xl
+                     border border-white/10 backdrop-blur-sm  px-5 py-3 
+                     rounded-xl group hover:bg-amber-50 dark:hover:bg-gray-500 
+                     transition-colors w-full ">
+                                <div className="flex items-center gap-4 w-full">
 
-                            <div className="flex items-center justify-center w-15 h-15 md:w-20 md:h-20 relative shrink-0">
+                                    <div
+                                        className="flex items-center justify-center w-15 h-15 
+                            md:w-20 md:h-20 relative shrink-0">
 
-                                <div onClick={() => handleCheckItem(item)} className={` md:group-hover:hidden w-10 h-10 md:w-13 md:h-13 rounded-full
+                                        <div onClick={() => handleCheckItem(item)} className={` md:group-hover:hidden w-10 h-10 md:w-13 md:h-13 rounded-full
                                  bg-amber-600 dark:bg-amber-50 flex items-center justify-center
                                  text-white dark:text-amber-900 text-xs cursor-pointer 
-                                ${ isChecked  ? "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" : 
-                                    "bg-amber-600 dark:bg-amber-50 text-white dark:text-amber-900"}`}
-                                    
-                                    >
-                                    {item.owner} </div>
+                                ${isChecked ? "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" :
+                                                "bg-amber-600 dark:bg-amber-50 text-white dark:text-amber-900"}`}
 
-                                <input type="checkbox" onChange={()=>handleCheckItem(item)}  className=" hidden md:group-hover:block w-4 h-4" />
+                                        >
+                                            {item.owner} </div>
 
-                            </div>
+                                        <input type="checkbox" onChange={() => handleCheckItem(item)} className=" hidden md:group-hover:block w-4 h-4" />
 
-
-                            <div className="flex justify-between items-center p-3 w-full ">
+                                    </div>
 
 
-                                <div className="w-full flex flex-col gap-1.5 dark:text-amber-50">
+                                    <div className="flex justify-between items-center p-3 w-full ">
 
-                                    <h2 className="font-bold">{item.name}</h2>
 
-                                    <p>{t(item.subject)}</p>
-                                    <p className="flex flex-row gap-2"> <MessageCircleMore/>  {t(activeSubmenu?.name ?? "")}</p>
+                                        <div className="w-full flex flex-col gap-1.5 dark:text-amber-50">
+
+                                            <h2 className="font-bold">{item.name}</h2>
+
+                                            <p>{t(item.subject)}</p>
+                                            <p className="flex flex-row gap-2"> <MessageCircleMore />  {t(activeSubmenu?.name ?? "")}</p>
+
+                                        </div>
+                                        <div className="flex flex-col items-end w-30 pr-3">
+                                            <p className="text-[12px] text-amber-600 dark:text-amber-50">Hoje, 11:42</p>
+                                            <p className="text-[10px] font-semibold text-amber-600 dark:text-amber-50">30 min</p>
+
+                                            <div className="flex -space-x-1.5 justify-end" >
+
+                                                {item.users.map((user, index) => (
+                                                    <div key={index}
+                                                        className=" flex relative items-center justify-center 
+                                                text-[8px] md:text-[12px] 
+                                                rounded-full bg-amber-600 text-amber-50 dark:bg-amber-50
+                                                 dark:border-gray-800
+                                                 dark:text-amber-700 w-6 h-6 md:w-8 md:h-8 border-2 
+                                                  border-white">
+                                                        {user}
+                                                    </div>
+                                                ))}</div>
+                                        </div>
+
+                                    </div>
 
                                 </div>
-                                <div className="flex flex-col items-end w-30 pr-3">
-                                    <p className="text-[12px] text-amber-600 dark:text-amber-50">Hoje, 11:42</p>
-                                    <p className="text-[10px] font-semibold text-amber-600 dark:text-amber-50">30 min</p>
-
-                                    <div className="flex -space-x-1.5 justify-end" >
-
-                                        {item.users.map((user, index) => (
-                                            <div key={index}
-                                                className=" flex relative items-center justify-center text-[8px] md:text-[12px] 
-                                                rounded-full bg-amber-600 text-amber-50 dark:bg-amber-50 dark:border-gray-800
-                                                 dark:text-amber-700 w-6 h-6 md:w-8 md:h-8 border-2  border-white">{user}</div>
-                                        ))}</div>
-                                </div>
-
                             </div>
-
-                        </div>
-                    </div>
-                    )
-                }))
+                        )
+                    }))
                 }
             </div>
         </div>
