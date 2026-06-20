@@ -48,7 +48,7 @@ const UserMenu = () => {
 
             <div className={` absolute flex flex-col justify-center decoration-none bg-white shadow-xl border
              border-white/10 backdrop-blur-sm gap-2 md:gap-4 border-b-gray-500 p-4
-             dark:bg-gray-800  top-18 z-50 md:top-21 left-0 overflow-hidden rounded-xl h-auto w-[75vw] md:w-full
+             dark:bg-gray-800  top-18 z-50 md:top-18 left-0 overflow-hidden rounded-xl h-auto w-[75vw] md:w-85
                 transition-all duration-700 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}>
                 <label className="text-gray-800 dark:text-white"> CONTA
                 <a href="#" className="flex flex-row justify-between gap-2 md:gap-3 text-gray-500 text-[13px] hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">

@@ -94,7 +94,7 @@ export default function MainPage() {
             </div>
 
 
-            <section className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-6 dark:bg-gray-700 mt-3 md:mt-0 
+            <section className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-6 dark:bg-gray-900 mt-3 md:mt-0 
             shadow-md">
                 <div className="flex flex-col justify-between gap-3 m-3.5">
                     <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
