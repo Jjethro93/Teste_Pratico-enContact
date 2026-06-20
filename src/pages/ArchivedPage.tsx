@@ -46,7 +46,7 @@ function ArchivedPage() {
 
 <Decoration />
 
-            <div className="flex flex-col gap-2 fixed z-50 p-2 top-3 right-2 md:top-auto md:right-auto justify-start md:bottom-10">
+            <div className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2 md:top-auto md:right-auto justify-center items-center md:bottom-10">
                 <ButtonDarkMode />
 
                 <ButtonLanguage />
