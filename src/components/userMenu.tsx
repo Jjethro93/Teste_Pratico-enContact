@@ -19,18 +19,22 @@ const UserMenu = () => {
     const { user } = useUser()
 
     return (
-        <div className="relative ">
+        <div>
 
             
 
-            <div className="flex flex-row gap-3 items-center justify-between bg-white dark:bg-gray-800  rounded-xl p-5 w-70 shadow-xl border border-white/10 backdrop-blur-sm">
+            <div className="flex flex-row gap-3 items-center justify-between bg-white dark:bg-gray-800  rounded-xl p-3 w-77 shadow-xl border border-white/10 backdrop-blur-sm">
                 <img src={userprofile} alt="Profile-Image" className="w-12 rounded-full border border-amber-600 cursor-pointer" onClick={() => setIsOpen(prev => !prev)} />
-                <h2 className="font-extrabold text-shadow-gray-400 dark:text-white">
-                    {user?.name}
+               <div className="flex flex-col"> 
+                <h1 className="font-semibold dark:text-white">{t("Bem Vindo!")}</h1>
+                <h2 className="font-semibold text-amber-600 text-shadow-gray-400 dark:text-white">     
+                {user?.name}
                 </h2>
-                <button className="flex flex-row w-25 gap-1 justify-between items-center
-                bg-amber-600 text-white hover:bg-red-500/10 cursor-pointer px-4
-                 border dark:border-white h-10.5 p-1.5 mr-3 rounded-lg
+                <p className="text-[10px] text-gray-600 dark:text-white">{t("Gerencie suas contas com facilidade")}</p>
+                </div>
+                <button className="flex flex-row w-24 gap-1 justify-between items-center
+                bg-amber-600 text-white text-[12px] hover:bg-red-500/10 cursor-pointer px-4
+                 border dark:border-white h-10.5 p-1 mr-3 rounded-lg
                   dark:bg-linear-to-r dark:from-gray-700 dark:to-gray-900 
                  dark:text-amber-50 hover:scale-105">
                       <Plus  /> {t("NOVO")}
@@ -40,24 +44,24 @@ const UserMenu = () => {
             </div>
 
 
-            <div className={` flex flex-col justify-center z-30 decoration-none bg-white shadow-xl border
-             border-white/10 backdrop-blur-sm gap-3 md:gap-4 border-b-gray-500 p-4
-             dark:bg-gray-800 absolute top-23 left-0 overflow-hidden rounded-xl h-auto w-70 px-4
+            <div className={` absolute flex flex-col justify-center decoration-none bg-white shadow-xl border
+             border-white/10 backdrop-blur-sm gap-2 md:gap-4 border-b-gray-500 p-4
+             dark:bg-gray-800  top-full z-50 md:top-21 left-0 overflow-hidden rounded-xl h-auto w-77
                 transition-all duration-700 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}>
                 <label className="text-gray-800 dark:text-white"> CONTA
-                <a href="#" className="flex flex-row justify-between gap-3 text-gray-500 text-[13px] hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
+                <a href="#" className="flex flex-row justify-between gap-2 md:gap-3 text-gray-500 text-[13px] hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
                     <Pencil size={25} />
                     <p className="w-full">{t("Editar perfil")} </p>
                     <span><ChevronRight size={12} /></span>
                 </a>
-                <a href="#" className="flex flex-row gap-3 justify-between text-gray-500 text-[13px]  hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
+                <a href="#" className="flex flex-row gap-2 md:gap-3 justify-between text-gray-500 text-[13px]  hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
                     <Settings size={25} />
                     <p className="w-full">{t("Configurações")}</p>
                     <span><ChevronRight size={12} /></span>
                 </a>
                 </label>
                 <label className="text-gray-700 dark:text-white" >SUPORTE
-                <a href="#" className="flex flex-row gap-3 justify-between text-[13px] text-gray-500 hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
+                <a href="#" className="flex flex-row gap-2 md:gap-3 justify-between text-[13px] text-gray-500 hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
                     <FileQuestionMark size={25} />
                     <p className="w-full">{t("Ajuda")}</p>
                     <span><ChevronRight size={12} /></span>
@@ -66,7 +70,7 @@ const UserMenu = () => {
 
                 <hr className="text-gray-600/60" />
 
-                <a onClick={() => navigate("/")} className="flex gap-4 flex-row items-center justify-between text-red-400 hover:bg-red-500/10 p-3 rounded-2xl items-center hover:text-amber-950 dark:hover:text-amber-600">
+                <a onClick={() => navigate("/")} className="flex gap-2 md:gap-4 flex-row items-center justify-between text-red-400 hover:bg-red-500/10 p-3 rounded-2xl items-center hover:text-amber-950 dark:hover:text-amber-600">
                     <LogOut size={25} />
                     <p className="w-full">{t("Sair")}</p>
                     <span><ChevronRight size={12} /></span>

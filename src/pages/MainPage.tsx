@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import ChatBox from "../components/ChatBox";
 import SideConversation from "../components/SideConversation";
 import UserMenu from "../components/userMenu"
-import { Archive, Calendar, ChevronDown, Search, UserPlus } from "lucide-react";
+import { Archive, Calendar, Search, UserPlus, FolderArchive, ListFilter } from "lucide-react";
 import { useArchive } from "../context/archiveContext";
 import { useNavigate } from "react-router";
 import ButtonLanguage from "../components/ButtonLanguage";
@@ -62,9 +62,33 @@ export default function MainPage() {
     return (
 
 
-        <div className={`relative flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-700
+        <div className={`relative min-h-screen overflow-hidden flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-600
          to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
          ${darkMode && "dark:"}`}>
+
+            {/* Bolinhas decorativas */}
+            <div className="absolute top-[8%] left-[12%] w-10 h-10 rounded-full bg-amber-200 blur-xl" />
+            <div className="absolute top-[18%] right-[20%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[35%] left-[30%] w-60 h-60 rounded-full bg-amber-300 blur-xl" />
+            <div className="absolute top-[48%] right-[10%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[62%] left-[8%] w-18 h-18 rounded-full bg-amber-200 blur-xl" />
+            <div className="absolute top-[72%] right-[28%] w-10 h-10 rounded-full bg-amber-300 blur-xl" />
+            <div className="absolute top-[84%] left-[40%] w-9 h-9 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[22%] left-[70%] w-45 h-45 rounded-full bg-amber-200 blur-xl" />
+            <div className="absolute top-[55%] left-[60%] w-40 h-40 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[90%] right-[15%] w-10 h-10 rounded-full bg-amber-300 blur-xl" />
+
+            <div className="absolute top-[8%] left-[2%] w-10 h-10 rounded-full bg-amber-200 blur-xl" />
+            <div className="absolute top-[18%] left-[20%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[35%] left-[5%] w-20 h-20 rounded-full bg-amber-300 blur-xl" />
+            <div className="absolute top-[48%] left-[10%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[62%] left-[8%] w-18 h-18 rounded-full bg-amber-200 blur-xl" />
+            <div className="absolute top-[72%] left-[28%] w-20 h-20 rounded-full bg-amber-300 blur-xl" />
+            <div className="absolute top-[84%] left-[40%] w-30 h-30 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[22%] left-[3%] w-7 h-7 rounded-full bg-amber-200 blur-xl" />
+            <div className="absolute top-[55%] left-[9%] w-8 h-8 rounded-full bg-amber-100 blur-xl" />
+            <div className="absolute top-[90%] right-[85%] w-10 h-10 rounded-full bg-amber-300 blur-xl" />
+            
 
             <div className="flex flex-col gap-2 fixed z-50 p-2 top-7 right-1 md:top-auto md:right-auto justify-start md:bottom-10">
                 <ButtonDarkMode />
@@ -73,22 +97,22 @@ export default function MainPage() {
             </div>
 
 
-            <div className="flex flex-col p-4 sticky z-10 bg-none md:z-0 w-full md:w-[35%] h-auto md:h-full top-0 md:p-8 ">
-                <nav className="flex flex-row justify-between w-full mt-4 mb-3 gap-2 ">
+            <div className="flex flex-col p-4 sticky   bg-none md:z-0 w-full md:w-[35%] h-auto md:h-full top-0 md:p-8 ">
+                <nav className="relative flex flex-row justify-between w-full mt-4 mb-3 gap-2 z-50 md:z-10 ">
                     <UserMenu />
 
                 </nav>
 
 
 
-                <section>
+                <section className="relative z-0" >
                     <SideConversation onSelectContact={handleClick} />
                 </section>
 
 
 
             </div>
-            <section className=" md:w-full md:h-full z-10 bg-gray-100 pt-6  dark:bg-gray-700 mt-3 md:mt-0 
+            <section className="relative z-0 md:z-0 md:w-full md:h-full bg-gray-100 pt-6 dark:bg-gray-700 mt-3 md:mt-0 
             shadow-md">
                 <div className="flex flex-col justify-between gap-3 m-3.5">
                     <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
@@ -98,53 +122,41 @@ export default function MainPage() {
                             value={searchText}
                             className="border-none hover:border-2 outline-none bg-white h-10.5
                      p-2.5 pl-10 rounded-2xl placeholder:text-gray-500 
-                     w-70 md:w-150 overflow-hidden dark:placeholder:text-gray-500 
+                     w-full overflow-hidden dark:placeholder:text-gray-500 
                      dark:border-0 dark:hover:border-gray-500"/>
                         <Search
                             className="absolute left-3 text-amber-600 dark:text-gray-600/60
                             pointer-events-none transition-all duration-200"
                         />
-                        <ChevronDown color="#f18811" />
+                        <ListFilter className="text-amber-600 dark:text-white" />
                     </div>
+                    <div className="ml-5">
+                        <div onClick={() => navigate("/archives")} className="flex flex-row max-w-50  gap-2 cursor-pointer hover:scale-105 text-amber-600 dark:text-white">
+                            <FolderArchive /> {t("ARQUIVOS")}
+                        </div>
 
-                    <Button onClick={() => navigate("/archives")} className="font-light text[12px]">
-                        {t("ARQUIVOS")}
-                    </Button>
+                        <p className="text-gray-600 dark:text-white">{t("Gerencie e organize seus arquivos")}</p>
+
+                    </div>
 
                 </div>
 
 
 
 
-                <div className="flex flex-row gap-3 md:gap-5 p-5 items-center ">
-                    <input type="checkbox" className="w-4.5 border-2 border-amber-600
-                " />
-                    <Button
-                        style={{
-                            backgroundColor: "#ffff",
-                            color: "#ff6f00",
-                            borderRadius: "10px"
-                        }}>
-                        <UserPlus className="hidden md:block" />{t("ATRIBUIR")}
+                <div className="flex flex-row justify-center gap-2 md:gap-5 p-4 rounded-xl items-center shadow-2xl
+                     border border-white/10 backdrop-blur-sm m-3">
+
+                    <Button >
+                        <UserPlus size={20} />{t("ATRIBUIR")}
                     </Button>
                     <Button
-                         style={{
-                            backgroundColor: "#ffff",
-                            color: "#ff6f00",
-                            borderRadius: "10px"
-                        }}
-                         onClick={handleArchive}>
-                        <Archive className="hidden md:block"/>
+                        onClick={handleArchive}>
+                        <Archive size={20} />
                         {t("ARQUIVAR")}
                     </Button>
-                    <Button 
-                     style={{
-                            backgroundColor: "#ffff",
-                            color: "#ff6f00",
-                            borderRadius: "10px"
-                        }}
-                    >
-                        <Calendar className="hidden md:block"/>
+                    <Button >
+                        <Calendar />
                         {t("AGENDAR")}
                     </Button>
 

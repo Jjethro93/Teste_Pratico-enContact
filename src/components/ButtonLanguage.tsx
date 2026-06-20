@@ -1,3 +1,4 @@
+import { Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const ButtonLanguage = ({ className }: { className?: string }) => {
@@ -12,9 +13,9 @@ const ButtonLanguage = ({ className }: { className?: string }) => {
     
 
     return (
-        <div className={`flex flex-row ${className ?? ""} transition-all ease-in-out cursor-pointer`}>
-            <button onClick={toggleLanguage} className={buttonStyle}>
-                {i18n.language === "pt" ? "EN" : "PT"}
+        <div className={`flex flex-col transition-all ease-in-out cursor-pointer ${className}`}>
+            <button onClick={toggleLanguage} className={`${buttonStyle} flex flex-row gap-1 p-1`}>
+                <Globe size={15}/> {i18n.language === "pt" ? "EN" : "PT"}
             </button>
         </div>
     );
