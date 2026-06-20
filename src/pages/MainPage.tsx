@@ -113,7 +113,8 @@ export default function MainPage() {
                         <ListFilter className="text-amber-600 dark:text-white" />
                     </div>
                     <div className="ml-5">
-                        <div onClick={() => navigate("/archives")} className="flex flex-row max-w-50  gap-2 cursor-pointer hover:scale-105 text-amber-600 dark:text-white">
+                        <div onClick={() => navigate("/archives")}
+                         className="flex flex-row max-w-50  gap-2 cursor-pointer hover:scale-105 text-amber-600 hover:text-amber-600 dark:text-white">
                             <FolderArchive /> {t("ARQUIVOS")}
                         </div>
 
