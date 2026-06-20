@@ -4,7 +4,7 @@
 const Decoration = ()=>{
 
     return(
-        <>
+        <div className="pointer-events-none">
         
          {/* Bolinhas decorativas */}
             <div className="absolute top-[8%] left-[12%] w-10 h-10 rounded-full bg-amber-200 blur-xl" />
@@ -29,7 +29,7 @@ const Decoration = ()=>{
             <div className="absolute top-[55%] left-[9%] w-8 h-8 rounded-full bg-amber-200 blur-xl" />
             <div className="absolute top-[90%] right-[85%] w-10 h-10 rounded-full bg-amber-400 blur-xl" />
         
-        </>
+        </div>
     );
 };
 

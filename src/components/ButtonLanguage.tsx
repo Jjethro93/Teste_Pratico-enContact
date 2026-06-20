@@ -9,7 +9,7 @@ const ButtonLanguage = ({ className }: { className?: string }) => {
         i18n.changeLanguage(newLanguage);
     };
 
-    const buttonStyle = "text-white rounded-2xl items-center w-11 h-11 text-[14px] dark:text-amber-50 dark:hover:text-amber-500 bg-white/3 shadow-xl border border-white/10 backdrop-blur-sm rounded-2xl";
+    const buttonStyle = "text-white rounded-2xl cursor-pointer hover:scale-105 items-center w-11 h-11 text-[14px] dark:text-amber-50 dark:hover:text-amber-500 bg-white/3 shadow-xl border border-white/10 backdrop-blur-sm rounded-2xl";
     
 
     return (

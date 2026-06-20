@@ -24,7 +24,8 @@ const UserMenu = () => {
             
 
             <div 
-            className="flex flex-row gap-2 md:gap-3 items-center justify-between bg-white dark:bg-gray-800  rounded-xl p-1 md:p-2 w-[75vw] md:w-full shadow-xl border border-white/10 backdrop-blur-sm">
+            className="flex flex-row gap-2 md:gap-3 items-center justify-between bg-white dark:bg-gray-800  
+            rounded-xl p-1 md:p-2 w-[75vw] md:w-full shadow-xl border border-white/10 backdrop-blur-sm">
                 <img src={userprofile} alt="Profile-Image" className="w-12 rounded-full border border-amber-600 cursor-pointer" onClick={() => setIsOpen(prev => !prev)} />
                <div className="flex flex-col"> 
                 <h1 className="font-semibold dark:text-white">{t("Bem Vindo!")}</h1>

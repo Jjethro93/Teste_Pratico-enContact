@@ -70,7 +70,7 @@ export default function MainPage() {
             <Decoration />
 
 
-            <div className="flex flex-col gap-2 fixed z-50 p-2 top-3 right-1 md:top-auto md:right-auto justify-start md:bottom-10">
+            <div className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2 md:top-auto md:right-auto justify-center items-center md:bottom-10">
                 <ButtonDarkMode />
 
                 <ButtonLanguage />
@@ -80,7 +80,7 @@ export default function MainPage() {
             <div className=" flex flex-col p-4 bg-none md:z-0 w-full md:w-[35%] md:overflow-y-auto md:h-sreen top-0 md:p-8 ">
 
 
-                <nav className="relative flex flex-row justify-between w-full gap-2 z-50 md:z-10 ">
+                <nav className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
                     <UserMenu />
 
                 </nav>
