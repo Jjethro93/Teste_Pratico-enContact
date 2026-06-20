@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import ButtonLanguage from "../components/ButtonLanguage";
 import ButtonDarkMode from "../components/ButtonDarkMode";
 import { useTranslation } from "react-i18next";
+import Decoration from "../components/Decoration";
 
 
 interface subMenuprops {
@@ -66,28 +67,7 @@ export default function MainPage() {
          to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
          ${darkMode && "dark:"}`}>
 
-            {/* Bolinhas decorativas */}
-            <div className="absolute top-[8%] left-[12%] w-10 h-10 rounded-full bg-amber-200 blur-xl" />
-            <div className="absolute top-[18%] right-[20%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[35%] left-[30%] w-60 h-60 rounded-full bg-amber-300 blur-xl" />
-            <div className="absolute top-[48%] right-[10%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[62%] left-[8%] w-18 h-18 rounded-full bg-amber-200 blur-xl" />
-            <div className="absolute top-[72%] right-[28%] w-10 h-10 rounded-full bg-amber-300 blur-xl" />
-            <div className="absolute top-[84%] left-[40%] w-9 h-9 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[22%] left-[70%] w-45 h-45 rounded-full bg-amber-200 blur-xl" />
-            <div className="absolute top-[55%] left-[60%] w-40 h-40 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[90%] right-[15%] w-10 h-10 rounded-full bg-amber-300 blur-xl" />
-
-            <div className="absolute top-[8%] left-[2%] w-10 h-10 rounded-full bg-amber-200 blur-xl" />
-            <div className="absolute top-[18%] left-[20%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[35%] left-[5%] w-20 h-20 rounded-full bg-amber-300 blur-xl" />
-            <div className="absolute top-[48%] left-[10%] w-15 h-15 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[62%] left-[8%] w-18 h-18 rounded-full bg-amber-200 blur-xl" />
-            <div className="absolute top-[72%] left-[28%] w-20 h-20 rounded-full bg-amber-300 blur-xl" />
-            <div className="absolute top-[84%] left-[40%] w-30 h-30 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[22%] left-[3%] w-7 h-7 rounded-full bg-amber-200 blur-xl" />
-            <div className="absolute top-[55%] left-[9%] w-8 h-8 rounded-full bg-amber-100 blur-xl" />
-            <div className="absolute top-[90%] right-[85%] w-10 h-10 rounded-full bg-amber-300 blur-xl" />
+           <Decoration/>
             
 
             <div className="flex flex-col gap-2 fixed z-50 p-2 top-7 right-1 md:top-auto md:right-auto justify-start md:bottom-10">
