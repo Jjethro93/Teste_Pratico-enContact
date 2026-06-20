@@ -63,22 +63,24 @@ export default function MainPage() {
     return (
 
 
-        <div className={`relative min-h-screen overflow-hidden flex flex-col md:flex-row w-full md:min-h-screen bg-linear-to-br from-amber-600
+        <div className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  min-h-screen md:h-screen bg-linear-to-br from-amber-600
          to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
          ${darkMode && "dark:"}`}>
 
-           <Decoration/>
-            
+            <Decoration />
 
-            <div className="flex flex-col gap-2 fixed z-50 p-2 top-7 right-1 md:top-auto md:right-auto justify-start md:bottom-10">
+
+            <div className="flex flex-col gap-2 fixed z-50 p-2 top-3 right-1 md:top-auto md:right-auto justify-start md:bottom-10">
                 <ButtonDarkMode />
 
                 <ButtonLanguage />
             </div>
 
 
-            <div className="flex flex-col p-4 sticky   bg-none md:z-0 w-full md:w-[35%] h-auto md:h-full top-0 md:p-8 ">
-                <nav className="relative flex flex-row justify-between w-full mt-4 mb-3 gap-2 z-50 md:z-10 ">
+            <div className=" flex flex-col p-4 bg-none md:z-0 w-full md:w-[35%] md:overflow-y-auto md:h-sreen top-0 md:p-8 ">
+
+
+                <nav className="relative flex flex-row justify-between w-full gap-2 z-50 md:z-10 ">
                     <UserMenu />
 
                 </nav>
@@ -89,10 +91,10 @@ export default function MainPage() {
                     <SideConversation onSelectContact={handleClick} />
                 </section>
 
-
-
             </div>
-            <section className="relative z-0 md:z-0 md:w-full md:h-full bg-gray-100 pt-6 dark:bg-gray-700 mt-3 md:mt-0 
+
+
+            <section className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-6 dark:bg-gray-700 mt-3 md:mt-0 
             shadow-md">
                 <div className="flex flex-col justify-between gap-3 m-3.5">
                     <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
@@ -115,7 +117,7 @@ export default function MainPage() {
                             <FolderArchive /> {t("ARQUIVOS")}
                         </div>
 
-                        <p className="text-gray-600 dark:text-white">{t("Gerencie e organize seus arquivos")}</p>
+                        <p className="text-gray-600 dark:text-white text-[12px]">{t("Gerencie e organize seus arquivos")}</p>
 
                     </div>
 

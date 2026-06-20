@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useUser } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import ButtonLanguage from "../components/ButtonLanguage";
+import Decoration from '../components/Decoration';
 
 const Login = () => {
     const { t } = useTranslation();
@@ -45,6 +46,8 @@ const Login = () => {
 
 
         <div className="flex flex-col items-center justify-center w-full md:w-full lg:w-full h-screen bg-gray-700">
+
+            <Decoration/>
             <div className="relative flex flex-col gap-7 items-center justify-center w-100 h-110 rounded-2xl bg-amber-500">
                 <ButtonLanguage className="absolute top-5 right-5"/>
                 <h1 className="text-amber-50 text-2xl font-bold">{t("Olá, seja bem vindo")}</h1>

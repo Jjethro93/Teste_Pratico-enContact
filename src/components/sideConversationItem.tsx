@@ -105,15 +105,18 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
                     <div key={contact.id}>
 
-                        <div className=" rounded-xl md:mt-4  md:p-3 shadow-xl border border-white/10 backdrop-blur-sm" >
+                        <div className=" rounded-xl md:mt-4  md:p-3 shadow-xl border bg-white/90 dark:bg-gray-800 border-white/10 backdrop-blur-sm" >
                             <button className="flex items-center justify-between md:w-full" onClick={() => toggleMenu(contact.id)}>
                                 <div className="flex items-center">
-                                    <UserIcon size={34} className=" shrink-0 m-2 w-9 text-white rounded-xl dark:text-amber-50 shadow-xl border p-1 
+                                    <UserIcon size={34} className=" shrink-0 m-2 w-9 text-amber-600 bg-amber-700/10 dark:bg-gray-700  rounded-full dark:text-amber-50 shadow-xl border p-1 
                                  border-white/10 backdrop-blur-sm"/>
-                                    <span className="text-white mr-10 w-full text-[10px] md:text-xl 
-                                 hover:text-amber-900 dark:text-amber-50"> {t(contact.name)}</span>
+                                    <span className="text-gray-900 dark:text-white mr-10 w-full text-[10px] md:text-xl 
+                                 hover:text-amber-900 ">
+                                        {t(contact.name)}
+                                    </span>
                                 </div>
-                                {isOpen === contact.id ? (<ChevronUpIcon size={30} className="text-white dark:text-amber-50 transition-all duration-900 ease-in-out" />) : (<ChevronDownIcon size={30} className="text-gray-100 dark:text-amber-50" />)}
+                                {isOpen === contact.id ? (<ChevronUpIcon size={30} className="text-amber-600 dark:text-amber-50 transition-all duration-900 ease-in-out" />) :
+                                    (<ChevronDownIcon size={30} className="text-amber-600 dark:text-amber-50" />)}
 
 
 
@@ -122,13 +125,13 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
                             <div
                                 className={`overflow-hidden ${isOpen === contact.id ? "max-h-auto mt-2 flex flex-row rounded-xl " : "max-h-0"}`}
                             >
-                                <ul className="flex flex-col justify-between cursor-pointer list-none gap-1 ml-6">
+                                <ul className="flex flex-col justify-between cursor-pointer list-none gap-1 ml-6 bg-amber-100/80 dark:bg-gray-700 rounded-xl">
                                     {contact.subMenus.map((submenu) => {
                                         const Icon = submenuIcons[submenu.name] || MessageCircleMore;
 
                                         return (
                                             <li key={submenu.id} onClick={() => onSelectContact(contact, submenu)}
-                                                className="flex flex-row md:w-54 p-3 rounded-xl gap-2 items-center text-white hover:bg-amber-500/40">
+                                                className="flex flex-row md:w-64 p-3 rounded-xl gap-2 items-center text-gray-900 dark:text-white hover:bg-amber-500/40">
                                                 <Icon size={20} /> {t(submenu.name)}</li>
                                         );
                                     })}
@@ -154,20 +157,26 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
             </div>
 
-            <div className="md:hidden flex items-center mt-9 transition-all duration-200 ease-in-out">
+            <div className="md:hidden flex items-center mt-5 transition-all duration-200 ease-in-out">
                 <button type="button"
                     className="text-white p-2 "
                     onClick={changeMenu}
                 >
-                    {isOpenMobile ? <X size={24} /> :
-                        <Users size={24}
-                            className="text-gray-100 dark:text-amber-50 bg-white/3 shadow-xl border
-                  border-white/10 backdrop-blur-sm rounded-2xl p-2 w-10 h-10" />}
+                    {isOpenMobile ? (<X size={24} />) : (
+                        <div className=" flex items-center justify-center text-gray-100 dark:text-amber-50
+                         w-25 bg-white/3 shadow-xl border
+                  border-white/10 backdrop-blur-sm rounded-xl p-2 gap-2 h-10">
+                            <Users size={24} />
+                            <span className="text-sm font-medium">
+                                {t("Contas")}
+                            </span>
+                        </div>)
+                    }
                 </button>
             </div>
 
             {isOpenMobile && (
-                <div className="md:hidden rounded-xl w-full p-4 bg-white dark:bg-gray-800 shadow-xl border border-white/10 backdrop-blur-sm">
+                <div className="md:hidden rounded-xl w-full p-4 bg-white/80 dark:bg-gray-800 shadow-xl border border-white/10 backdrop-blur-sm">
                     {contacts.map((contact) => (
                         <div key={contact.id} className="flex justify-center mb-4">
                             <div className=" p-4 rounded-xl shadow-xl border w-full border-white/10 backdrop-blur-sm " >
@@ -191,7 +200,7 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
                                 </button>
 
                                 {isOpen === contact.id && (
-                                    <ul className="p-4 mt-2 bg-amber-50 dark:bg-gray-700 rounded-xl">
+                                    <ul className="p-4 mt-2 bg-amber-100/80 dark:bg-gray-700 rounded-xl">
                                         {contact.subMenus.map((submenu) => {
                                             const Icon = submenuIcons[submenu.name] || MessageCircleMore;
 
@@ -203,9 +212,9 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
                                                         onSelectContact(contact, submenu);
                                                         setIsOpenMobile(false);
                                                     }}
-                                                    className=" flex flex-row text-gray-900 dark:text-white py-1 rounded-xl gap-3 items-center active:bg-amber-500/40"
+                                                    className=" flex flex-row text-gray-900 dark:text-white py-1 rounded-xl gap-3 p-3 items-center active:bg-amber-500/40"
                                                 >
-                                                   <Icon size={20} /> {t(submenu.name)}
+                                                    <Icon size={20} /> {t(submenu.name)}
                                                 </li>
                                             );
                                         })}

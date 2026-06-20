@@ -3,6 +3,7 @@ import { fetchItems } from "../services/api";
 import { useArchive } from "../context/archiveContext";
 import { useTranslation } from "react-i18next";
 import { MessageCircleMore } from "lucide-react";
+import { ExternalLink, Trash2, Crown, Inbox } from "lucide-react"
 
 
 interface subMenuItemProps {
@@ -33,16 +34,26 @@ interface contactT {
 interface ChatBoxProps {
     activeContact: contactT | null;
     activeSubmenu: subMenuprops | null;
+
     searchText: string;
 
 }
+
+const submenuIcons: Record<string, React.ElementType> = {
+    "Caixa de entrada": Inbox,
+    "Caixa de saída": ExternalLink,
+    "Lixo": Trash2,
+    "Vip": Crown,
+    "Entrada": Inbox,
+};
+
 
 function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
 
     const [items, setItems] = useState<subMenuApiProps[]>([]);
     const { archivedItems, checkedItems } = useArchive();
     const { t } = useTranslation();
-
+    const Icon = submenuIcons[activeSubmenu?.name ?? ""] || MessageCircleMore;
 
 
 
@@ -84,7 +95,7 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
 
 
     return (
-        <div className=" bg-gray-100 dark:bg-gray-800 min-h-40 ">
+        <div className=" bg-gray-100/10 dark:bg-gray-800 min-h-40 ">
 
             <div className="flex flex-col gap-4 m-4 ">
 
@@ -134,7 +145,7 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                                             <h2 className="font-bold">{item.name}</h2>
 
                                             <p>{t(item.subject)}</p>
-                                            <p className="flex flex-row gap-2"> <MessageCircleMore />  {t(activeSubmenu?.name ?? "")}</p>
+                                            <p className="flex flex-row gap-2 items-center"> <Icon size={20} />  {t(activeSubmenu?.name ?? "")}</p>
 
                                         </div>
                                         <div className="flex flex-col items-end w-30 pr-3">

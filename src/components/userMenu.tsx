@@ -23,7 +23,8 @@ const UserMenu = () => {
 
             
 
-            <div className="flex flex-row gap-3 items-center justify-between bg-white dark:bg-gray-800  rounded-xl p-3 w-77 shadow-xl border border-white/10 backdrop-blur-sm">
+            <div 
+            className="flex flex-row gap-2 md:gap-3 items-center justify-between bg-white dark:bg-gray-800  rounded-xl p-1 md:p-2 w-[75vw] md:w-full shadow-xl border border-white/10 backdrop-blur-sm">
                 <img src={userprofile} alt="Profile-Image" className="w-12 rounded-full border border-amber-600 cursor-pointer" onClick={() => setIsOpen(prev => !prev)} />
                <div className="flex flex-col"> 
                 <h1 className="font-semibold dark:text-white">{t("Bem Vindo!")}</h1>
@@ -32,12 +33,12 @@ const UserMenu = () => {
                 </h2>
                 <p className="text-[10px] text-gray-600 dark:text-white">{t("Gerencie suas contas com facilidade")}</p>
                 </div>
-                <button className="flex flex-row w-24 gap-1 justify-between items-center
-                bg-amber-600 text-white text-[12px] hover:bg-red-500/10 cursor-pointer px-4
+                <button className="flex flex-row w-20 gap-1 justify-between items-center
+                bg-amber-600 text-white text-[10px] hover:bg-white hover:text-amber-600 cursor-pointer px-4
                  border dark:border-white h-10.5 p-1 mr-3 rounded-lg
                   dark:bg-linear-to-r dark:from-gray-700 dark:to-gray-900 
                  dark:text-amber-50 hover:scale-105">
-                      <Plus  /> {t("NOVO")}
+                      <Plus size={20}  /> {t("NOVO")}
                         
                         
                  </button>
@@ -46,7 +47,7 @@ const UserMenu = () => {
 
             <div className={` absolute flex flex-col justify-center decoration-none bg-white shadow-xl border
              border-white/10 backdrop-blur-sm gap-2 md:gap-4 border-b-gray-500 p-4
-             dark:bg-gray-800  top-full z-50 md:top-21 left-0 overflow-hidden rounded-xl h-auto w-77
+             dark:bg-gray-800  top-18 z-50 md:top-21 left-0 overflow-hidden rounded-xl h-auto w-[75vw] md:w-full
                 transition-all duration-700 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}>
                 <label className="text-gray-800 dark:text-white"> CONTA
                 <a href="#" className="flex flex-row justify-between gap-2 md:gap-3 text-gray-500 text-[13px] hover:text-amber-950 dark:hover:text-amber-600  hover:bg-amber-50 p-3 rounded-2xl items-center">
