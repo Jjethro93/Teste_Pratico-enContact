@@ -63,18 +63,18 @@ export default function MainPage() {
     return (
 
 
-        <div 
-        className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  -space-y-9 md:space-y-0 min-h-screen
+        <div
+            className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  -space-y-9 md:space-y-0 min-h-screen
             md:h-screen 
          ${darkMode && "dark:"}`}>
 
-           
-
-            
 
 
-            <div 
-            className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2
+
+
+
+            <div
+                className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2
              md:top-auto md:right-auto justify-center items-center md:bottom-10">
                 <ButtonDarkMode />
 
@@ -82,13 +82,14 @@ export default function MainPage() {
             </div>
 
 
-            <div 
-            className="relative flex flex-col p-4 rounded-3xl md:rounded-none z-40 
+            <div
+                className="relative flex flex-col p-4 rounded-b-3xl md:rounded-none z-40 
             md:z-0 w-full md:h-full md:w-[35%] 
             bg-linear-to-br  from-amber-700  
-         to-amber-500 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 overflow-hidden md:overflow-y-auto md:h-sreen md:p-8">
+         to-amber-500 dark:bg-linear-to-tl dark:from-black dark:to-gray-700
+          md:overflow-y-auto md:h-sreen md:p-8">
 
-             <Decoration />
+                <Decoration />
                 <nav className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
                     <UserMenu />
 
@@ -103,8 +104,8 @@ export default function MainPage() {
             </div>
 
 
-            <section 
-            className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-9 dark:bg-gray-900 mt-3 md:mt-0 
+            <section
+                className="relative  z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-9 dark:bg-gray-900 mt-3 md:mt-0 
             shadow-md rounded-">
                 <div className="flex flex-col justify-between gap-3 m-3.5">
                     <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
@@ -124,7 +125,7 @@ export default function MainPage() {
                     </div>
                     <div className="ml-5 hidden md:block">
                         <div onClick={() => navigate("/archives")}
-                         className="flex flex-row max-w-50  gap-2 cursor-pointer hover:scale-105 text-amber-600 hover:text-amber-600 dark:text-white">
+                            className="flex flex-row max-w-50  gap-2 cursor-pointer hover:scale-105 text-amber-600 hover:text-amber-600 dark:text-white">
                             <FolderArchive /> {t("ARQUIVOS")}
                         </div>
 
@@ -136,26 +137,29 @@ export default function MainPage() {
 
 
 
+                <div className="flex flex-col  items-center justify-center">
 
-                <div className="flex flex-row justify-center gap-3 md:gap-5  items-center 
+                    <h1 className="text-[16px] font-semibold text-amber-600 dark:text-white">AÇÕES RÁPIDAS</h1>
+                    <div className="flex flex-row justify-center gap-3 md:gap-5  items-center 
                       m-3">
 
-                    <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm" >
-                        <UserPlus size={30} 
-                        className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800  rounded-xl w-12 h-12 p-3 " />
-                        <p className="text-[12px]  dark:text-gray-400">{t("ATRIBUIR")}</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm"
-                        onClick={handleArchive}>
-                        <Archive size={30} className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800 rounded-xl w-12 h-12 p-3 " />
-                        <p className="text-[12px] dark:text-gray-400"> {t("ARQUIVAR")}</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm" >
-                        <Calendar size={30} className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800 rounded-xl w-12 h-12 p-3 " />
-                        <p className="text-[12px]  dark:text-gray-400" >{t("AGENDAR")}</p>
-                    </div>
+                        <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm" >
+                            <UserPlus size={30}
+                                className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800  rounded-xl w-12 h-12 p-3 " />
+                            <p className="text-[12px]  dark:text-gray-400">{t("ATRIBUIR")}</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm"
+                            onClick={handleArchive}>
+                            <Archive size={30} className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800 rounded-xl w-12 h-12 p-3 " />
+                            <p className="text-[12px] dark:text-gray-400"> {t("ARQUIVAR")}</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm" >
+                            <Calendar size={30} className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800 rounded-xl w-12 h-12 p-3 " />
+                            <p className="text-[12px]  dark:text-gray-400" >{t("AGENDAR")}</p>
+                        </div>
 
 
+                    </div>
                 </div>
 
 

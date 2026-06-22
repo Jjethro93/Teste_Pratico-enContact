@@ -107,7 +107,7 @@ const MobileMenuBar = ({ onSelectContact: onSelectContact }: MobileMenuBarProps)
 
 
     return (
-        <div className="flex flex-row md:hidden fixed bottom-0 z-50 w-full bg-white dark:bg-gray-800
+        <div className="flex flex-row md:hidden fixed bottom-0 z-40 w-full bg-white dark:bg-gray-800
          py-3 justify-center items-center gap-11">
             {Menu.map((menu) => {
                 const Icon = menu.icon
@@ -146,7 +146,7 @@ const MobileMenuBar = ({ onSelectContact: onSelectContact }: MobileMenuBarProps)
       fixed bottom-20 left-4 right-4
       rounded-xl bg-white dark:bg-gray-800
       shadow-xl border border-white/10
-      p-4 z-50
+      p-4 z-40
     "
                 >
                     {contacts.map((contact) => (
