@@ -89,7 +89,7 @@ interface MobileMenuBarProps {
     onSelectContact: (contact: contactT, submenu: subMenuprops) => void;
 }
 
-const MobileMenuBar = ({ onSelectContact }: MobileMenuBarProps) => {
+const MobileMenuBar = ({ onSelectContact: onSelectContact }: MobileMenuBarProps) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [showContacts, setShowContacts] = useState(false);
