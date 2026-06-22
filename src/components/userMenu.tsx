@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../context/userContext";
+import OnlineStatus from "./OnlineStatus";
 
 
 
@@ -24,9 +25,12 @@ const UserMenu = () => {
 
 
             <div
-                className="flex flex-row gap-2 md:gap-3 mt-6 md:mt-0 items-center justify-between dark:md:bg-gray-800  
+                className="flex flex-row gap-2 md:gap-3 mt-14 md:mt-0 items-center justify-between dark:md:bg-gray-800  
             rounded-xl p-1 md:p-2 w-[75vw] md:w-full">
-                <User size={30} fill="#ed6a0d" className="w-20 h-15 p-2 rounded-full text-amber-600 bg-white border cursor-pointer" onClick={() => setIsOpen(prev => !prev)} />
+                <div className="relative flex items-center w-14 h-14 md:w-18 md:h-16">
+                <User size={30} fill="#ed6a0d" className="w-14 h-14 md:w-16 md:h-16 p-2 items-center rounded-full text-amber-600 bg-white border cursor-pointer" onClick={() => setIsOpen(prev => !prev)} />
+                <OnlineStatus variant="online" />
+                </div>
                 <div className="flex flex-col">
                     <h1 className="leading-4 font-semibold text-sm text-white">
                         {t("Bem Vindo!")}
@@ -40,7 +44,7 @@ const UserMenu = () => {
                 </div>
 
                 <button className="flex flex-row w-20 gap-1 justify-between items-center
-                bg-amber-600 text-white text-[10px] hover:bg-white hover:text-amber-600 cursor-pointer px-4
+                bg-white text-amber-600 text-[10px] hover:bg-white hover:text-amber-600 cursor-pointer px-4
                 h-10.5 p-1 mr-3 rounded-lg
                   dark:bg-linear-to-r dark:from-gray-600 dark:to-gray-700 
                  dark:text-amber-50 hover:scale-105">

@@ -102,7 +102,7 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
                     <div key={contact.id}>
 
-                        <div className=" rounded-xl md:mt-4  md:p-3 shadow-xl border bg-white/90 dark:bg-gray-800 border-white/10 backdrop-blur-sm" >
+                        <div className=" rounded-xl md:mt-4  md:p-3 shadow-xl border hover:scale-105 bg-white/90 dark:bg-gray-800 border-white/10 backdrop-blur-sm" >
                             <button className="flex items-center justify-between md:w-full" onClick={() => toggleMenu(contact.id)}>
                                 <div className="flex items-center">
                                     <UserIcon size={34} className=" shrink-0 m-2 w-9 text-amber-600 bg-amber-700/10 dark:bg-gray-700  rounded-full dark:text-amber-50 shadow-xl border p-1 

@@ -64,26 +64,31 @@ export default function MainPage() {
 
 
         <div 
-        className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  min-h-screen 
-            md:h-screen bg-linear-to-br from-amber-600
-         to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
+        className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  -space-y-9 md:space-y-0 min-h-screen
+            md:h-screen 
          ${darkMode && "dark:"}`}>
 
-            <Decoration />
+           
 
-            <MobileMenuBar onSelectContact={handleClick} />
+            
 
 
-            <div className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2 md:top-auto md:right-auto justify-center items-center md:bottom-10">
+            <div 
+            className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2
+             md:top-auto md:right-auto justify-center items-center md:bottom-10">
                 <ButtonDarkMode />
 
                 <ButtonLanguage />
             </div>
 
 
-            <div className=" flex flex-col p-4 bg-none md:z-0 w-full md:w-[35%] md:overflow-y-auto md:h-sreen top-0 md:p-8 ">
+            <div 
+            className="relative flex flex-col p-4 rounded-3xl md:rounded-none z-40 
+            md:z-0 w-full md:h-full md:w-[35%] 
+            bg-linear-to-br  from-amber-700  
+         to-amber-500 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 overflow-hidden md:overflow-y-auto md:h-sreen md:p-8">
 
-
+             <Decoration />
                 <nav className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
                     <UserMenu />
 
@@ -98,8 +103,9 @@ export default function MainPage() {
             </div>
 
 
-            <section className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-6 dark:bg-gray-900 mt-3 md:mt-0 
-            shadow-md">
+            <section 
+            className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-9 dark:bg-gray-900 mt-3 md:mt-0 
+            shadow-md rounded-">
                 <div className="flex flex-col justify-between gap-3 m-3.5">
                     <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
                         <input type="search"
@@ -163,6 +169,8 @@ export default function MainPage() {
 
 
             </section>
+
+            <MobileMenuBar onSelectContact={handleClick} />
         </div>
 
     )

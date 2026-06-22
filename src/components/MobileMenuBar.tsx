@@ -1,5 +1,5 @@
-import { Archive, ChevronDownIcon, ChevronUpIcon, Crown, ExternalLink, Home, Inbox, MessageCircle, Trash2, UserIcon, Users } from "lucide-react";
-import { useState, type ComponentType } from "react";
+import { FolderArchive, ChevronDownIcon, ChevronUpIcon, Crown, ExternalLink, Home, Inbox, MessageCircle, Trash2, UserIcon, Users } from "lucide-react";
+import { useState, type ComponentType, type ElementType } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router";
 
@@ -12,14 +12,14 @@ interface MenuProps {
 }
 
 const Menu: MenuProps[] = [
-    { name: "Home", icon: Home, path: "/home" },
+    { name: "Início", icon: Home, path: "/home" },
     { name: "Contas", icon: Users, action: "contacts" },
     { name: "Mensagens", icon: MessageCircle, path: "/messages" },
-    { name: "Arquivados", icon: Archive, path: "/archives" },
+    { name: "Arquivados", icon: FolderArchive , path: "/archives" },
 ]
 
 
-const submenuIcons: Record<string, React.ElementType> = {
+const submenuIcons: Record<string, ElementType> = {
     "Caixa de entrada": Inbox,
     "Caixa de saída": ExternalLink,
     "Lixo": Trash2,
@@ -108,7 +108,7 @@ const MobileMenuBar = ({ onSelectContact: onSelectContact }: MobileMenuBarProps)
 
     return (
         <div className="flex flex-row md:hidden fixed bottom-0 z-50 w-full bg-white dark:bg-gray-800
-         py-4 justify-center items-center gap-9">
+         py-3 justify-center items-center gap-11">
             {Menu.map((menu) => {
                 const Icon = menu.icon
                 const isActive = menu.path === location.pathname
@@ -126,10 +126,13 @@ const MobileMenuBar = ({ onSelectContact: onSelectContact }: MobileMenuBarProps)
                             }
                         }}
                         className="flex flex-col items-center">
-                        <Icon size={30} className={isActive ? "text-amber-600 dark:text-amber-200" : "text-gray-600 dark:text-gray-400"} />
-                        <p className={`text-xs ${isActive ? "text-amber-600 dark:text-amber-200" : "text-gray-600 dark:text-gray-400"}`} >{menu.name}</p>
+                        <Icon size={25} 
+                        className={isActive ? "text-amber-600 dark:text-amber-200" : "text-gray-600 dark:text-gray-400"} />
+                        <p 
+                        className={`text-xs ${isActive ? "text-amber-600 dark:text-amber-200" : 
+                        "text-gray-600 dark:text-gray-400"}`} >{t(menu.name)}</p>
                         {isActive && (
-                            <div className="absolute bottom-3 w-13 h-1 rounded-full bg-amber-600 dark:bg-amber-200" />
+                            <div className="absolute bottom-2 w-13 h-1 rounded-full bg-amber-600 dark:bg-amber-200" />
                         )}
                     </button>)
 

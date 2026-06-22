@@ -4,6 +4,7 @@ import { useArchive } from "../context/archiveContext";
 import { useTranslation } from "react-i18next";
 import { MessageCircleMore } from "lucide-react";
 import { ExternalLink, Trash2, Crown, Inbox } from "lucide-react"
+import OnlineStatus from "./OnlineStatus";
 
 
 interface subMenuItemProps {
@@ -95,9 +96,9 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
 
 
     return (
-        <div className=" bg-gray-100/10 dark:bg-gray-800 min-h-40 ">
+        <div className=" bg-gray-100/10 dark:bg-gray-900 min-h-40 mb-20 md:mb-0 ">
 
-            <div className="flex flex-col gap-1 md:gap-4 m-4 ">
+            <div className="flex flex-col gap-1 md:gap-4 m-4  ">
 
                 {visibleItems.length === 0 ? (
                     <h1
@@ -116,7 +117,7 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                             <div key={item.id} className="flex items-center shadow  md:shadow-xl
                      border border-white/10 backdrop-blur-sm  px-5 py-3 
                      rounded-xl group hover:bg-amber-50 dark:hover:bg-gray-500 
-                     transition-colors w-full ">
+                     transition-colors w-full bg-white dark:bg-gray-800 ">
                                 <div className="flex items-center w-full gap-1 md:gap-2">
 
                                     <div
@@ -124,14 +125,18 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                                         md:w-20 md:h-20 relative shrink-0">
 
                                         <div onClick={() => handleCheckItem(item)}
-                                            className={` md:group-hover:hidden w-13 h-13 md:w-17 md:h-17 rounded-full
-                                             bg-linear-to-bl from-amber-400 to-amber-700 dark:bg-linear-to-bl dark:from-white dark:to-gray-500  flex items-center justify-center
+                                            className={`relative md:group-hover:hidden w-13 h-13 md:w-17 md:h-17 rounded-full
+                                              flex items-center justify-center
                                              text-white text-2xl font-semibold cursor-pointer 
-                                             ${isChecked ? "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" :
-                                                    "bg-amber-600 dark:bg-white-50 text-white"}`}
+                                             ${isChecked ? 
+                                                "bg-blue-950 dark:bg-blue-950 text-white dark:text-white" 
+                                                :"bg-linear-to-bl from-amber-400 to-amber-700 dark:from-white dark:to-gray-500"}`}
 
                                         >
-                                            {item.owner} </div>
+                                            {item.owner}
+                                            <OnlineStatus variant="offline" />
+                                            
+                                            </div>
 
                                         <input type="checkbox" onChange={() => handleCheckItem(item)} className=" hidden md:group-hover:block w-4 h-4" />
 
@@ -148,11 +153,11 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                                             <p className="text-[12px] md:text-[16px] text-amber-600 dark:text-amber-50">
                                                 {t(item.subject)}
                                             </p>
-                                            <p className="flex flex-row gap-2 items-center"> 
-                                                <Icon className="text-amber-600 dark:text-amber-50" size={15} /> 
-                                                
-                                                 <span className="text-[10px] md:text-[12px] text-gray-400 dark:text-amber-50">{t(activeSubmenu?.name ?? "")}</span>
-                                                 </p>
+                                            <p className="flex flex-row gap-2 items-center">
+                                                <Icon className="text-amber-600 dark:text-amber-50" size={15} />
+
+                                                <span className="text-[10px] md:text-[12px] text-gray-400 dark:text-amber-50">{t(activeSubmenu?.name ?? "")}</span>
+                                            </p>
 
                                         </div>
                                         <div className="flex flex-col items-end w-30 pr-3">
@@ -165,8 +170,8 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                                                     <div key={index}
                                                         className=" flex relative items-center justify-center 
                                                 text-[8px] md:text-[12px] 
-                                                rounded-full bg-amber-600 text-amber-50 dark:bg-amber-50
-                                                 dark:border-gray-800 dark:text-gray-800
+                                                rounded-full bg-linear-to-bl from-amber-400 to-amber-700 dark:from-white dark:to-gray-500
+                                                 dark:border-gray-800 text-white
                                                  w-6 h-6 md:w-8 md:h-8 border-2 
                                                   border-white">
                                                         {user}
