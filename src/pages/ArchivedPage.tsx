@@ -7,6 +7,7 @@ import ButtonLanguage from "../components/ButtonLanguage";
 import { useNavigate } from "react-router";
 import ButtonDarkMode from "../components/ButtonDarkMode";
 import Decoration from "../components/Decoration";
+import MobileMenuBar from "../components/MobileMenuBar";
 
 
 
@@ -52,8 +53,10 @@ function ArchivedPage() {
                 <ButtonLanguage />
             </div>
 
+            <MobileMenuBar />
+
             <button
-                className="fixed z-40 bottom-4 left-5 md:left-45 flex flex-row w-30 gap-1 justify-between items-center
+                className="fixed z-40 bottom-20 left-5 md:left-45 flex flex-row w-30 gap-1 justify-between items-center
                 bg-amber-600 text-white hover:bg-white hover:text-amber-600 cursor-pointer px-4
                  border dark:border-white h-10.5 p-1.5 mr-3 rounded-lg
                   dark:bg-linear-to-r dark:from-gray-700 dark:to-gray-900 

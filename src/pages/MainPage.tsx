@@ -1,5 +1,4 @@
 import { useState, type ChangeEvent } from "react";
-import Button from "../components/Button";
 import ChatBox from "../components/ChatBox";
 import SideConversation from "../components/SideConversation";
 import UserMenu from "../components/userMenu"
@@ -10,6 +9,7 @@ import ButtonLanguage from "../components/ButtonLanguage";
 import ButtonDarkMode from "../components/ButtonDarkMode";
 import { useTranslation } from "react-i18next";
 import Decoration from "../components/Decoration";
+import MobileMenuBar from "../components/MobileMenuBar";
 
 
 interface subMenuprops {
@@ -63,11 +63,15 @@ export default function MainPage() {
     return (
 
 
-        <div className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  min-h-screen md:h-screen bg-linear-to-br from-amber-600
+        <div 
+        className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  min-h-screen 
+            md:h-screen bg-linear-to-br from-amber-600
          to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
          ${darkMode && "dark:"}`}>
 
             <Decoration />
+
+            <MobileMenuBar onSelectContact={handleClick} />
 
 
             <div className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2 md:top-auto md:right-auto justify-center items-center md:bottom-10">
@@ -112,7 +116,7 @@ export default function MainPage() {
                         />
                         <ListFilter className="text-amber-600 dark:text-white" />
                     </div>
-                    <div className="ml-5">
+                    <div className="ml-5 hidden md:block">
                         <div onClick={() => navigate("/archives")}
                          className="flex flex-row max-w-50  gap-2 cursor-pointer hover:scale-105 text-amber-600 hover:text-amber-600 dark:text-white">
                             <FolderArchive /> {t("ARQUIVOS")}
@@ -127,21 +131,23 @@ export default function MainPage() {
 
 
 
-                <div className="flex flex-row justify-center gap-2 md:gap-5 p-4 rounded-xl items-center shadow-2xl
-                     border border-white/10 backdrop-blur-sm m-3">
+                <div className="flex flex-row justify-center gap-3 md:gap-5  items-center 
+                      m-3">
 
-                    <Button >
-                        <UserPlus size={20} />{t("ATRIBUIR")}
-                    </Button>
-                    <Button
+                    <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm" >
+                        <UserPlus size={30} 
+                        className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800  rounded-xl w-12 h-12 p-3 " />
+                        <p className="text-[12px]  dark:text-gray-400">{t("ATRIBUIR")}</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm"
                         onClick={handleArchive}>
-                        <Archive size={20} />
-                        {t("ARQUIVAR")}
-                    </Button>
-                    <Button >
-                        <Calendar />
-                        {t("AGENDAR")}
-                    </Button>
+                        <Archive size={30} className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800 rounded-xl w-12 h-12 p-3 " />
+                        <p className="text-[12px] dark:text-gray-400"> {t("ARQUIVAR")}</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center px-5 py-2 gap-1 md:gap-2 hover:scale-105 cursor-pointer border rounded-xl shadow border-white/10 backdrop-blur-sm" >
+                        <Calendar size={30} className="text-amber-600 dark:text-white bg-amber-50 dark:bg-gray-800 rounded-xl w-12 h-12 p-3 " />
+                        <p className="text-[12px]  dark:text-gray-400" >{t("AGENDAR")}</p>
+                    </div>
 
 
                 </div>

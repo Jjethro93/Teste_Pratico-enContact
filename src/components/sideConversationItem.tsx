@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronUpIcon, ExternalLink, Trash2, Crown, Inbox, UserIcon, Users, X } from "lucide-react"
+import { ChevronDownIcon, ChevronUpIcon, ExternalLink, Trash2, Crown, Inbox, UserIcon } from "lucide-react"
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MessageCircleMore } from "lucide-react"
@@ -40,11 +40,8 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
     }
 
 
-    const [isOpenMobile, setIsOpenMobile] = useState<boolean>(false)
 
-    const changeMenu = (): void => {
-        setIsOpenMobile(!isOpenMobile);
-    }
+    
 
 
     const contacts: contactT[] = [
@@ -157,74 +154,6 @@ function SideConversationItem({ onSelectContact }: SideConversationProps) {
 
             </div>
 
-            <div className="md:hidden flex items-center mt-5 transition-all duration-200 ease-in-out">
-                <button type="button"
-                    className="text-white p-2 "
-                    onClick={changeMenu}
-                >
-                    {isOpenMobile ? (<X size={24} />) : (
-                        <div className=" flex items-center justify-center text-gray-100 dark:text-amber-50
-                         w-25 bg-white/3 shadow-xl border
-                  border-white/10 backdrop-blur-sm rounded-xl p-2 gap-2 h-10">
-                            <Users size={24} />
-                            <span className="text-sm font-medium">
-                                {t("Contas")}
-                            </span>
-                        </div>)
-                    }
-                </button>
-            </div>
-
-            {isOpenMobile && (
-                <div className="md:hidden rounded-xl w-full p-4 bg-white/80 dark:bg-gray-800 shadow-xl border border-white/10 backdrop-blur-sm">
-                    {contacts.map((contact) => (
-                        <div key={contact.id} className="flex justify-center mb-4">
-                            <div className=" p-4 rounded-xl shadow-xl border w-full border-white/10 backdrop-blur-sm " >
-                                <button
-                                    className="flex items-center justify-between w-full h-10"
-                                    onClick={() => toggleMenu(contact.id)}
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <UserIcon size={25} className="text-amber-600 bg-amber-700/10 dark:bg-gray-700 rounded-full p-2 h-10 w-10 dark:text-white" />
-                                        <span className="text-gray-900 dark:text-white">
-                                            {t(contact.name)}
-                                        </span>
-
-                                    </div>
-
-                                    {isOpen === contact.id ? (
-                                        <ChevronUpIcon size={20} className="text-amber-600 dark:text-white" />
-                                    ) : (
-                                        <ChevronDownIcon size={20} className="text-amber-600 dark:text-white" />
-                                    )}
-                                </button>
-
-                                {isOpen === contact.id && (
-                                    <ul className="p-4 mt-2 bg-amber-100/80 dark:bg-gray-700 rounded-xl">
-                                        {contact.subMenus.map((submenu) => {
-                                            const Icon = submenuIcons[submenu.name] || MessageCircleMore;
-
-                                            return (
-
-                                                <li
-                                                    key={submenu.id}
-                                                    onClick={() => {
-                                                        onSelectContact(contact, submenu);
-                                                        setIsOpenMobile(false);
-                                                    }}
-                                                    className=" flex flex-row text-gray-900 dark:text-white py-1 rounded-xl gap-3 p-3 items-center active:bg-amber-500/40"
-                                                >
-                                                    <Icon size={20} /> {t(submenu.name)}
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
 
         </div>
 
