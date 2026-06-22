@@ -86,7 +86,7 @@ const contacts: contactT[] = [
 
 
 interface MobileMenuBarProps {
-    onSelectContact: (contact: contactT, submenu: subMenuprops) => void;
+    onSelectContact?: (contact: contactT, submenu: subMenuprops) => void;
 }
 
 const MobileMenuBar = ({ onSelectContact: onSelectContact }: MobileMenuBarProps) => {

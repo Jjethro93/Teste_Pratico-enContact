@@ -10,8 +10,6 @@ import Decoration from "../components/Decoration";
 import MobileMenuBar from "../components/MobileMenuBar";
 
 
-
-
 function ArchivedPage() {
 
     const [searchText, setSearchText] = useState<string>("");
