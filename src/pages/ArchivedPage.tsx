@@ -1,4 +1,4 @@
-import { ListFilter, Search, Undo2 } from "lucide-react"
+import { ListFilter, Search, Undo2, FileArchive } from "lucide-react"
 import { useArchive } from "../context/archiveContext"
 import { useState, type ChangeEvent } from "react";
 import UserMenu from "../components/userMenu";
@@ -8,6 +8,8 @@ import { useNavigate } from "react-router";
 import ButtonDarkMode from "../components/ButtonDarkMode";
 import Decoration from "../components/Decoration";
 import MobileMenuBar from "../components/MobileMenuBar";
+import EmptyArchive from "../assets/EmptyArchive.png";
+
 
 
 function ArchivedPage() {
@@ -16,7 +18,9 @@ function ArchivedPage() {
     const { t } = useTranslation();
     const [darkMode] = useState(false);
 
-    const navigate = useNavigate()
+
+
+    const navigate = useNavigate();
 
     const { archivedItems } = useArchive();
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -25,59 +29,78 @@ function ArchivedPage() {
     };
 
     const filteredItems = archivedItems.filter((item) => {
-    const text = searchText.toLowerCase();
+        const text = searchText.toLowerCase();
+
+        return (
+            item.name.toLowerCase().includes(text) ||
+            item.subject.toLowerCase().includes(text) ||
+            item.owner.toLowerCase().includes(text)
+        );
+    });
+
+
+
 
     return (
-        item.name.toLowerCase().includes(text) ||
-        item.subject.toLowerCase().includes(text) ||
-        item.owner.toLowerCase().includes(text)
-    );
-});
 
-
-
-
-    return (
-
-        <div className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  min-h-screen md:h-screen bg-linear-to-br from-amber-600
-         to-amber-400 dark:bg-linear-to-tl dark:from-black dark:to-gray-700 
+        <div className={`relative md:overflow-hidden flex flex-col md:flex-row w-full
+                  -space-y-20 md:space-y-0 min-h-screen
+            md:h-screen 
          ${darkMode && "dark:"}`}>
 
-<Decoration />
 
-            <div className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2 md:top-auto md:right-auto justify-center items-center md:bottom-10">
+
+            <div
+                className="flex flex-col gap-2 fixed z-50 md:p-2 top-3 right-2
+             md:top-auto md:right-auto justify-center items-center md:bottom-10">
                 <ButtonDarkMode />
 
                 <ButtonLanguage />
             </div>
 
-            <MobileMenuBar />
+
 
             <button
-                className="fixed z-40 bottom-20 left-5 md:left-45 flex flex-row w-30 gap-1 justify-between items-center
-                bg-amber-600 text-white hover:bg-white hover:text-amber-600 cursor-pointer px-4
-                 border dark:border-white h-10.5 p-1.5 mr-3 rounded-lg
-                  dark:bg-linear-to-r dark:from-gray-700 dark:to-gray-900 
-                 dark:text-amber-50 hover:scale-105"
-                onClick={() => navigate("/home")}>
+                onClick={() => navigate("/home")}
+                className="hidden md:fixed md:flex z-40 bottom-10 left-55 flex-row w-30 gap-1 justify-between items-center
+                text-amber-600 bg-white  cursor-pointer px-4
+                border dark:border-white h-10.5 p-1.5 mr-3 rounded-xl
+                dark:bg-linear-to-r dark:from-gray-700 dark:to-gray-900
+                dark:text-amber-50 hover:scale-105">
                 <Undo2 size={20} />
                 {t("VOLTAR")}
-
             </button>
 
 
-            <div className=" flex flex-col p-4 bg-none md:z-0 w-full md:w-[35%] md:overflow-y-auto md:h-sreen top-0 md:p-8 ">
-                <nav className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
+
+
+            <div className="relative flex flex-col p-4 rounded-b-[70px] md:rounded-none z-40 
+            md:z-0 w-full md:h-full md:w-[35%] 
+            bg-linear-to-r from-orange-500 to-amber-500
+             dark:bg-linear-to-tl dark:from-black dark:to-gray-700
+          md:overflow-y-auto md:h-sreen md:p-8">
+
+                <Decoration />
+
+                <nav
+                    className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
                     <UserMenu />
 
                 </nav>
+
+            
+
             </div>
 
 
-            <section  className=" relative z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-6 dark:bg-gray-700 mt-3 md:mt-0 
-            shadow-md">
+            <section className="relative  z-0 md:z-0 md:w-full flex-1 md:overflow-y-auto
+                 bg-gray-100 pt-22 md:pt-4 dark:bg-gray-900 mt-3 md:mt-0 mb-3 md:mb-4
+            shadow-md items-center justify-center ">
+
                 <div className="flex flex-col justify-between gap-3 m-3.5">
-                    <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
+                    <div
+                        className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8 ">
+
                         <input type="search"
                             placeholder={t("Pesquisar")}
                             onChange={handleSearchChange}
@@ -94,16 +117,26 @@ function ArchivedPage() {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-4 m-4 ">
+                <div className="flex flex-col gap-4 m-4 h-full">
 
                     {filteredItems.length === 0 ? (
-                        <h1
-                            className="flex justify-center mt-20 text-2xl 
-                md:text-3xl font-semibold text-gray-600
+                        <div
+                            className="flex flex-col justify-center items-center mb-20
+                  ">
+
+                            <img src={EmptyArchive} className="w-1/2" alt="archivedEmptyImage" />
+                            <div className="flex flex-row justify-center  text-gray-600
                  dark:text-amber-50 items-center shadow-xl
-                     border border-white/10 backdrop-blur-sm p-3 rounded-xl ">
-                            {t("Nenhum item arquivado!")}
-                        </h1>)
+                     border border-white/10 backdrop-blur-sm p-3 rounded-xl gap-3">
+                                <FileArchive size={25} className="text-amber-600 dark:text-amber-50 h-10 w-10" />
+                                <div className="flex flex-col items-start justify-between md:w-lg">
+                                    <h1 className="font-semibold">{t("Nenhum item arquivado!")}</h1>
+                                    <p className="text-xs md:text-sm flex items-center justify-center">
+                                        {t("Parece que você não possui nenhum item arquivado. Quando arquivar um item, ele aparecerá aqui.")}
+                                        </p>
+                                </div>
+                            </div>
+                        </div>)
                         :
                         (
 
@@ -166,6 +199,8 @@ function ArchivedPage() {
 
 
             </section>
+
+            <MobileMenuBar />
         </div>
 
     )

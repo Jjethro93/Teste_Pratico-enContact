@@ -30,7 +30,7 @@ function SideConversation({ onSelectContact }: SideConversationProps) {
                 <Star size={35} fill="#fff" className="flex items-center text-gray-100 dark:text-amber-50 m-2 bg-white/3 p-2 shadow-xl border border-white/10 backdrop-blur-sm rounded-2xl shrink-0"/>
                 <div className="w-full">
                     
-                    <h2 className="font-medium text-gray-100 dark:text-amber-50">{t("FAVORITAS")} </h2>
+                    <h2 className="font-medium text-gray-100 dark:text-amber-50">{t("Favoritas")} </h2>
                     <p className="text-white text-[10px] "> {t("Acesse suas contas favoritas rapidamente")}</p>
                 </div>
                 <div className="flex items-center gap-4">

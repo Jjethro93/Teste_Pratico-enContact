@@ -1,34 +1,57 @@
+import  FloatingShape  from "./FloatingShape";
 
 
 
-const Decoration = ()=>{
+const Decoration = () => {
 
-    return(
-        <div className="pointer-events-none">
-        
-         {/* Bolinhas decorativas */}
-            <div className="absolute top-[8%] left-[62%] w-10 h-10 rounded-full bg-amber-200 dark:blur-xl" />
-            <div className="absolute top-[18%] right-[20%] w-13 h-13 rounded-full bg-amber-100 dark:blur-xl" />
-            <div className="absolute top-[35%] left-[30%] w-10 h-10 rounded-full bg-amber-400 dark:blur-xl" />
-            <div className="absolute top-[48%] right-[10%] w-8 h-8 rounded-full bg-amber-400 dark:blur-xl" />
-            <div className="absolute top-[8%] left-[10%] w-7 h-7 rounded-full bg-amber-200 dark:blur-xl" />
-            
-            
-            <div className="absolute top-[22%] left-[70%] w-15 h-15 rounded-full bg-amber-400 dark:blur-lg" />
-            <div className="absolute top-[55%] left-[60%] w-10 h-10 rounded-full bg-amber-300 dark:blur-lg" />
-            <div className="absolute top-[70%] left-[80%] w-10 h-10 rounded-full bg-amber-300 dark:blur-lg" />
+   
 
-            <div className="absolute top-[8%] left-[42%] w-10 h-10 rounded-full bg-amber-200 dark:blur-lg " />
-            <div className="absolute top-[18%] left-[20%] w-12 h-12 rounded-full bg-amber-400 dark:blur-lg" />
-            <div className="absolute top-[35%] left-[50%] w-10 h-10 rounded-full bg-amber-400 dark:blur-lg" />
-            <div className="absolute top-[48%] left-[10%] w-15 h-15 rounded-full bg-amber-300 dark:blur-lg" />
-            <div className="absolute top-[62%] left-[38%] w-15 h-15 rounded-full bg-amber-300 dark:blur-lg" />
-            <div className="absolute top-[72%] left-[28%] w-10 h-10 rounded-full bg-amber-300 dark:blur-lg" />
-            
-            <div className="absolute top-[22%] left-[3%] w-7 h-7 rounded-full bg-amber-200 dark:blur-xl" />
-            <div className="absolute top-[55%] left-[9%] w-8 h-8 rounded-full bg-amber-200 dark:blur-xl" />
-            
-        
+   
+
+
+    return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none"
+      >
+            <FloatingShape 
+                className="absolute top-4 right-12 w-20 h-20 bg-white/20 rotate-12 rounded-3xl"
+            />
+
+
+            <FloatingShape
+                className="absolute -top-6 -left-6 w-28 h-28 bg-yellow-300/30 rounded-full "
+            />
+
+
+            <FloatingShape className="absolute top-20 right-4 w-16 h-16 bg-white/15 rounded-full "
+
+            />
+
+
+            <FloatingShape className="absolute bottom-10 left-32 w-12 h-12 bg-amber-200/30 rotate-45 rounded-2xl "
+
+            />
+
+
+            <FloatingShape className="absolute top-10 left-52 w-6 h-6 bg-white/40 rounded-full "
+
+            />
+
+
+            <FloatingShape className="absolute bottom-14 right-28 w-8 h-8 bg-yellow-200/40 rounded-full "
+
+            />
+
+
+            <FloatingShape className="absolute top-28 left-10 w-10 h-10 bg-white/10 rotate-12 rounded-xl "
+
+            />
+
+
+            <FloatingShape className="absolute bottom-4 right-12 w-14 h-14 border-2 border-white/20 rounded-full "
+
+            />
+
+
         </div>
     );
 };

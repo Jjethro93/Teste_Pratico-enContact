@@ -64,7 +64,8 @@ export default function MainPage() {
 
 
         <div
-            className={`relative md:overflow-hidden flex flex-col md:flex-row w-full  -space-y-9 md:space-y-0 min-h-screen
+            className={`relative md:overflow-hidden flex flex-col md:flex-row w-full
+                  -space-y-20 md:space-y-0 min-h-screen
             md:h-screen 
          ${darkMode && "dark:"}`}>
 
@@ -83,14 +84,15 @@ export default function MainPage() {
 
 
             <div
-                className="relative flex flex-col p-4 rounded-b-3xl md:rounded-none z-40 
+                className="relative flex flex-col p-4 rounded-b-[70px] md:rounded-none z-40 
             md:z-0 w-full md:h-full md:w-[35%] 
-            bg-linear-to-br  from-amber-700  
-         to-amber-500 dark:bg-linear-to-tl dark:from-black dark:to-gray-700
+            bg-linear-to-r from-orange-500 to-amber-500
+             dark:bg-linear-to-tl dark:from-black dark:to-gray-700
           md:overflow-y-auto md:h-sreen md:p-8">
 
                 <Decoration />
-                <nav className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
+                <nav 
+                className="relative flex flex-row justify-between w-full gap-2 z-40 md:z-10 ">
                     <UserMenu />
 
                 </nav>
@@ -98,17 +100,22 @@ export default function MainPage() {
 
 
                 <section className="relative z-0" >
-                    <SideConversation onSelectContact={handleClick} />
+                    <SideConversation onSelectContact={handleClick}
+                      />
                 </section>
 
             </div>
 
 
             <section
-                className="relative  z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto bg-gray-100 pt-9 dark:bg-gray-900 mt-3 md:mt-0 
-            shadow-md rounded-">
+                className="relative  z-0 md:z-0 md:w-full h-full md:flex-1 md:overflow-y-auto
+                 bg-gray-100 pt-22 md:pt-4 dark:bg-gray-900 mt-3 md:mt-0 mb-3 md:mb-20
+            shadow-md "
+
+            >
                 <div className="flex flex-col justify-between gap-3 m-3.5">
-                    <div className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
+                    <div 
+                    className="relative flex flex-row items-center justify-between gap-1 border-2 border-none mb-8  ">
                         <input type="search"
                             placeholder={t("Pesquisar")}
                             onChange={handleSearchChange}
@@ -137,9 +144,12 @@ export default function MainPage() {
 
 
 
-                <div className="flex flex-col  items-center justify-center">
+                <div className="flex flex-col  items-center justify-center"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                >
 
-                    <h1 className="text-[16px] font-semibold text-amber-600 dark:text-white">AÇÕES RÁPIDAS</h1>
+                    <h1 className="text-[16px] font-semibold text-amber-600 dark:text-white">{t("AÇÕES RÁPIDAS")}</h1>
                     <div className="flex flex-row justify-center gap-3 md:gap-5  items-center 
                       m-3">
 
@@ -166,7 +176,8 @@ export default function MainPage() {
                 <div className="w-full h-full mt-8 ">
 
 
-                    <ChatBox activeContact={activeContact} activeSubmenu={activeSubmenu} searchText={searchText} />
+                    <ChatBox activeContact={activeContact} activeSubmenu={activeSubmenu} searchText={searchText}
+                        />
 
 
                 </div>

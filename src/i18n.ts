@@ -9,7 +9,7 @@ import pt from "./locales/pt.json";
 
 
 i18n.use(initReactI18next).init({
-    lng: "pt", 
+    lng: localStorage.getItem("language") ?? "pt",
     resources: { 
         pt: { translation: pt }, 
         en: { translation: en } }, 

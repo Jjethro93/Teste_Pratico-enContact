@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { MessageCircleMore } from "lucide-react";
 import { ExternalLink, Trash2, Crown, Inbox } from "lucide-react"
 import OnlineStatus from "./OnlineStatus";
+import {motion} from "framer-motion"
 
 
 interface subMenuItemProps {
@@ -35,7 +36,6 @@ interface contactT {
 interface ChatBoxProps {
     activeContact: contactT | null;
     activeSubmenu: subMenuprops | null;
-
     searchText: string;
 
 }
@@ -96,7 +96,10 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
 
 
     return (
-        <div className=" bg-gray-100/10 dark:bg-gray-900 min-h-40 mb-20 md:mb-0 ">
+        <div className=" bg-gray-100/10 dark:bg-gray-900 min-h-40
+        "
+        
+        >
 
             <div className="flex flex-col gap-1 md:gap-4 m-4  ">
 
@@ -108,16 +111,24 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                      border border-white/10 backdrop-blur-sm ">
                         {t("Por favor, selecione uma conta")}
                     </h1>)
-                    : (visibleItems.map((item) => {
+                    : (visibleItems.map((item, index) => {
                         const isChecked = checkedItems.some((checkedItem: subMenuItemProps) => checkedItem.id === item.id);
 
                         return (
 
 
-                            <div key={item.id} className="flex items-center shadow  md:shadow-xl
+                            <motion.div key={item.id} className="flex items-center
                      border border-white/10 backdrop-blur-sm  px-5 py-3 
                      rounded-xl group hover:bg-amber-50 dark:hover:bg-gray-500 
-                     transition-colors w-full bg-white dark:bg-gray-800 ">
+                     transition-colors w-full bg-white dark:bg-gray-800 "
+                     
+                     initial={{ opacity:0, x:-60 }}
+                     whileInView={{ opacity:1, x:0 }}
+                     viewport={{ once: false }}
+                     transition={{duration:0.6, delay: index * 0.15}}
+                     
+                     
+                     >
                                 <div className="flex items-center w-full gap-1 md:gap-2">
 
                                     <div
@@ -134,7 +145,7 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
 
                                         >
                                             {item.owner}
-                                            <OnlineStatus variant="offline" />
+                                            <OnlineStatus variant="online" />
                                             
                                             </div>
 
@@ -156,12 +167,13 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                                             <p className="flex flex-row gap-2 items-center">
                                                 <Icon className="text-amber-600 dark:text-amber-50" size={15} />
 
-                                                <span className="text-[10px] md:text-[12px] text-gray-400 dark:text-amber-50">{t(activeSubmenu?.name ?? "")}</span>
+                                                <span 
+                                                className="text-[10px] md:text-[12px] text-gray-400 dark:text-amber-50">{t(activeSubmenu?.name ?? "")}</span>
                                             </p>
 
                                         </div>
                                         <div className="flex flex-col items-end w-30 pr-3">
-                                            <p className="text-[12px] text-amber-600 dark:text-amber-50">Hoje, 11:42</p>
+                                            <p className="text-[12px] text-amber-600 dark:text-amber-50">{t("Hoje")}, 11:42</p>
                                             <p className="text-[10px] font-semibold text-amber-600 dark:text-amber-50">30 min</p>
 
                                             <div className="flex -space-x-1.5 justify-end" >
@@ -182,7 +194,7 @@ function ChatBox({ activeSubmenu, searchText }: ChatBoxProps) {
                                     </div>
 
                                 </div>
-                            </div>
+                            </motion.div>
                         )
                     }))
                 }
